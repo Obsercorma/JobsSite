@@ -1,0 +1,3 @@
+﻿GRANT USAGE ON *.* TO `bddjobs_user`@`localhost` IDENTIFIED BY PASSWORD '*C044B4B642347605ECDEC97013EAB82D61A2B2C3';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `bddjobs`.* TO `bddjobs_user`@`localhost`;
