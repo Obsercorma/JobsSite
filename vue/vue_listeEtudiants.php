@@ -13,7 +13,7 @@
                 <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
                 <a href="#" class="btn btn-outline-dark fw-bold border-2">Consulter le profil</a>
             </div>
-        </div>{}
+        </div>
         <div class="card text-center fw-bold w-25 h-100">
             <div class="card-body d-flex flex-column justify-content-center align-items-center">
                 <img src="./defaultStudent.png" alt="Etudiant" class="img-student">
