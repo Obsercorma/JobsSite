@@ -8,7 +8,7 @@
   <head>
     <meta charset="utf-8">
     <title>Activités récentes | Employeur</title>
-    <link rel="stylesheet" href="css/activites_recentes.css">
+    <!-- <link rel="stylesheet" href="css/activites_recentes.css"> -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="js/bootstrap.bundle.js">
   </head>

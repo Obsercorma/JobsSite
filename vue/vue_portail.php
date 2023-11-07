@@ -1,5 +1,5 @@
 <?php
-    include "./vue_entete.php";
+    include "vue/vue_entete.php";
 ?>
 <body class="overflow-x-hidden">
 

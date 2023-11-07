@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mes offres | Employeur</title>
-    <link rel="stylesheet" href="css/mes_offres.css">
+    <!-- <link rel="stylesheet" href="css/mes_offres.css"> -->
 </head>
 <body>
     
