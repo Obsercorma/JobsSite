@@ -43,8 +43,8 @@
 <!-- CONNEXION / INSCRIPTION  ------------------------------------------------------------------------------>
             <div class="col-4 align-self-end">
               <div class="">
-                  <button><a href="../html/index.php">Se Connecter(tableau de bord étudiant)</a></button>
-                  <button><a href="../html/index.php">S'inscrire (tableau de bord employeur)</a></button>
+                  <button><a href="index.php?section=dashboardEtud">Se Connecter(tableau de bord étudiant)</a></button>
+                  <button><a href="index.php?section=dashboardEmploi">S'inscrire (tableau de bord employeur)</a></button>
               </div>
             </div>
 

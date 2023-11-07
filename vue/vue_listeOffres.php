@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Découvrez toutes les offres | Étudiant</title>
-    <link rel="stylesheet" href="css/liste_offres.css">
+    <!-- <link rel="stylesheet" href="css/liste_offres.css"> -->
 </head>
 <body>
     <h1 class="titreprincipal"><b>Découvrez toutes les offres</b></h1>

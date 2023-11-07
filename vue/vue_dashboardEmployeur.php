@@ -9,20 +9,20 @@
     <section class="actions-grp">
         <div class="card border-0">
             <div class="card-body gray-box bg-secondary rounded">
-                <a href="#" class="btn btn-outline-light border-2">Déposer une annonce</a>
+                <a href="index.php?section=depotAnno" class="btn btn-outline-light border-2">Déposer une annonce</a>
             </div>
         </div>
         <div class="card border-0">
             <div class="card-body gray-box bg-secondary rounded">
-                <a href="#" class="btn btn-outline-light border-2">Voir mes offres</a>
+                <a href="index.php?section=mesOffres" class="btn btn-outline-light border-2">Voir mes offres</a>
             </div>
         </div>
         <div class="card border-0">
             <div class="card-body gray-box bg-secondary rounded">
-                <a href="#" class="btn btn-outline-light border-2">Activités récentes</a>
+                <a href="index.php?section=activitesRecentes" class="btn btn-outline-light border-2">Activités récentes</a>
             </div>
         </div>
     </section>
-    <a href="#" class="btn btn-light mb-3">Découvrir les offres</a>
+    <a href="index.php?section=lesOffres" class="btn btn-light mb-3">Découvrir les offres</a>
 </body>
 </html>
