@@ -3,7 +3,6 @@ if (!isset($_GET['section']) OR $_GET['section'] == 'index')
 {
     include_once('controleur/portail.php');
 }else{
-
 	if ($_GET['section'] == 'login')
 	{  
 		include_once('controleur/login.php');
