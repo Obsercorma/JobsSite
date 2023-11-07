@@ -5,9 +5,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <title>Projet Jobs</title>
-    <link rel="stylesheet" href="../css/styles.css">
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <link rel="stylesheet" href="../js/bootstrap.bundle.min.css">
+    <link rel="stylesheet" href="vue/css/style.css">
+    <link rel="stylesheet" href="vue/css/bootstrap.min.css">
+    <link rel="stylesheet" href="vue/js/bootstrap.bundle.min.css">
 </head>
 
 <body>
@@ -20,32 +20,39 @@
 
         <nav class="navbar">
           <div class="container-fluid">
-            <a class="navbar-brand"><img src="../images/logoJobsEtudiant.jpg" class=""></a>
-<!--- BARRE DE RECHERCHE ----------------------------------------------------------------------------------->
-            <form class="d-flex" role="search">
 
-              <div class="form-floating">
-                <input class="form-control me-2" type="search" id="floatingInput" placeholder="Une demande ?" aria-label="Search">
-                <label for="floatingInput">Un job en tête ?</label>
+            <div class="row justify-content-between">
+              <div class="col-4">
+                <a class="navbar-brand">
+                  <img src="vue/images/logoJobsEtudiant.jpg" class="logoEntete">
+                </a>
               </div>
+<!--- BARRE DE RECHERCHE ----------------------------------------------------------------------------------->
+            <div class="col-4">
+              <form class="d-flex" role="search">
 
-                <button class="btn btn-primary" type="submit">Rechercher</button>
+                <div class="form-floating">
+                  <input class="form-control me-2" type="search" id="floatingInput" placeholder="Une demande ?" aria-label="Search">
+                  <label for="floatingInput">Un job en tête ?</label>
+                </div>
 
-            </form>
+                  <button class="btn btn-primary" type="submit">Rechercher</button>
+              </form>
+            </div>
 
 <!-- CONNEXION / INSCRIPTION  ------------------------------------------------------------------------------>
-
-            <div>
-                <button><a href="../html/index.php">Se Connecter(tableau de bord étudiant)</a></button>
-                <button><a href="../html/index.php">S'inscrire (tableau de bord employeur)</a></button>
+            <div class="col-4 align-self-end">
+              <div class="">
+                  <button><a href="../html/index.php">Se Connecter(tableau de bord étudiant)</a></button>
+                  <button><a href="../html/index.php">S'inscrire (tableau de bord employeur)</a></button>
+              </div>
             </div>
+
           </div>
-
-
-        </nav>
-
-
-
+        </div>
+      </nav>
     </div>
+
+
 </body>
 </html>
