@@ -14,12 +14,12 @@
         </div>
         <div class="card border-0">
             <div class="card-body gray-box bg-secondary rounded">
-                <a href="index.php?section=activitesRecentes" class="btn btn-outline-light border-2">Voir mes candidatures</a>
+                <a href="index.php?section=mesCandidatures" class="btn btn-outline-light border-2">Voir mes candidatures</a>
             </div>
         </div>
         <div class="card border-0">
             <div class="card-body gray-box bg-secondary rounded">
-                <a href="index.php?section=lesOffres" class="btn btn-outline-light border-2">Activités récentes</a>
+                <a href="index.php?section=activitesRecentes" class="btn btn-outline-light border-2">Activités récentes</a>
             </div>
         </div>
     </section>
