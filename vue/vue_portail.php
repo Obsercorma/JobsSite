@@ -1,7 +1,7 @@
 <?php
     include "vue/vue_entete.php";
 ?>
-<body class="overflow-x-hidden">
+<body class="overflow-x-hidden p-0">
 
 <div>
 
@@ -28,6 +28,9 @@
       </div>
     </div>
 </section>
+
+<br><br>
+
   </div>
 
   <br><br>
@@ -39,21 +42,21 @@
 
     <div class="row">
       <div class="col-md-4 text-center">
-        <img src="../images/user.jpg" title="image-theme">
+        <img src="vue/images/user.png" title="image-theme" width="50%">
         <br><br>
         <p><b>offre 1</b></p>
         <p>Date de publication?</p>
       </div>
 
       <div class="col-md-4 text-center">
-        <img src="../images/user.jpg" title="image-theme">
+        <img src="vue/images/user.png" title="image-theme" width="50%">
         <br><br>
         <p><b>offre 2</b></p>
         <p>Date de publication?</p>
       </div>
 
       <div class="col-md-4 text-center">
-        <img src="../images/user.jpg" title="image-theme">
+        <img src="vue/images/user.png" title="image-theme" width="50%">
         <br><br>
         <p><b>offre 3</b></p>
         <p>Date de publication?</p>
@@ -66,28 +69,27 @@
         </div>
 
   </div>    <!-- DIV CLASS ROUNDED-3...   -->
-</div>
-</body>
 
-<br><br><br>
 
-<footer class="col-md-12 bg-dark text-white">
+  <footer class="col-12 bg-dark text-white mt-5">
 
-    <div class="container text-center">
-<br>
-      <div class="row align-items-start ">
+      <div class="container text-center">
+  <br>
+        <div class="row align-items-start ">
 
-        <div class="col-md-6" id="scrollAPropos">
-          <h4>Qui sommes-nous ?</h4>
-          <a class="p-1 rounded" href="#aPropos">A propos</a>
+          <div class="col-md-6" id="scrollAPropos">
+            <h4>Qui sommes-nous ?</h4>
+            <a class="p-1 rounded" href="#aPropos">A propos</a>
+
+          </div>
+
+          <div class="col-md-6">
+            <h4>Confidentialité</h4>
+          </div>
 
         </div>
-
-        <div class="col-md-6">
-          <h4>Confidentialité</h4>
-        </div>
-
       </div>
-    </div>
 
-</footer>
+  </footer>
+
+</body>
