@@ -1,8 +1,6 @@
 <?php 
     include "vue/vue_entete.php";
 ?>
-
-<body>
     <h1 class="title fw-bold">Profil</h1>
     <div class="card bg-dark text-white rounded border-0 bg-opacity-75" style="width: 28rem;">
   <img src="vue/images/avatar-anonyme.png" class="card-img-top" alt="...">
@@ -14,5 +12,5 @@
   </div>
 </div>
     <a href="index.php?section=lesOffres" class="btn btn-light mb-3">Découvrir les offres</a>
-</body>
-</html>
+
+<?php include_once("vue/vue_footer.php"); ?>

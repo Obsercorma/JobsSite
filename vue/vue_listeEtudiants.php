@@ -1,7 +1,6 @@
 <?php 
     include "vue/vue_entete.php";
 ?>
-<body>
     <h1 class="title fw-bold">Liste étudiants</h1>
     <section class="list-students">
         <div class="card text-center fw-bold w-25 h-100">
@@ -36,5 +35,4 @@
         </div>
     </section>
     <div></div>
-</body>
-</html>
+<?php include_once("vue/vue_footer.php"); ?>
