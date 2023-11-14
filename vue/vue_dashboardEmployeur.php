@@ -1,14 +1,6 @@
 <?php 
     include "./vue_entete.php";
 ?>
-
-<head>
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
-    <link rel="stylesheet" href="./js/bootstrap.bundle.min.css">
-</head>
-
-<body>
     <h1 class="title fw-bold">Tableau de bord employeur</h1>
     <h2 class="fw-bold mx-auto">
     Prénom/Nom/Société
@@ -31,5 +23,5 @@
         </div>
     </section>
     <a href="#" class="btn btn-light mb-3">Découvrir les offres</a>
-</body>
-</html>
+
+    <?php include_once("vue/vue_footer.php"); ?>

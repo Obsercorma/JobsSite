@@ -1,7 +1,6 @@
 <?php 
-    include "vue/vue_entete.php";
+    include("./vue_entete.php");
 ?>
-<body>
 <br>
 
     <h1 class="text-center text-white">Déposer une annonce</h1>
@@ -90,8 +89,4 @@
 
       </div>
 
-
-
-  </body>
-
-</html>
+<?php include_once("./vue_footer.php"); ?>

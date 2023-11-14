@@ -1,21 +1,6 @@
 <?php 
     include "vue_entete.php";
 ?>
-
-
-<!DOCTYPE html>
-<html lang="fr" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Activités récentes | Employeur</title>
-    <!-- <link rel="stylesheet" href="css/activites_recentes.css"> -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="js/bootstrap.bundle.js">
-  </head>
-
-  <body>
-<br>
-
       <h1 class="titreprincipal"><b>Activités récentes</b></h1> 
 
       <div class="rounded-3 col-md-8 row flex-nowrap bg-black bg-opacity-50 w-75 mx-auto p-3 align-self-center menu-pleine-hauteur">
@@ -47,8 +32,4 @@
 
       </div>
 
-
-
-  </body>
-
-</html>
+<?php include_once("vue/vue_footer.php"); ?>

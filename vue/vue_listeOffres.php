@@ -1,19 +1,6 @@
 <?php 
     include "vue_entete.php";
 ?>
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Découvrez toutes les offres | Étudiant</title>
-    <!-- <link rel="stylesheet" href="css/liste_offres.css"> -->
-</head>
-<body>
     <h1 class="titreprincipal"><b>Découvrez toutes les offres</b></h1>
 
     <div class="cards">   
@@ -51,7 +38,6 @@
                 <a href="#" class="btn btn-danger btn-lg btn-block">Postuler</a>
             </div>
         </div>
-    </div>                        
-        
-</body>
-</html>
+    </div>
+
+<?php include_once("vue/vue_footer.php"); ?>

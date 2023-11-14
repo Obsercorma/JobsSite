@@ -1,7 +1,6 @@
 <?php 
     include "vue/vue_entete.php";
 ?>
-<body>
 <br>
       <div class="rounded-3 col-md-8 row flex-nowrap bg-black bg-opacity-25 w-75 mx-auto p-3 align-self-center">
 
@@ -81,8 +80,4 @@
 
       </div>
 
-
-
-  </body>
-
-</html>
+<?php include_once("vue/vue_footer.php"); ?>
