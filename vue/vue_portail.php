@@ -1,8 +1,6 @@
 <?php
     include "vue/vue_entete.php";
 ?>
-<body class="overflow-x-hidden p-0">
-
 <div>
 
   <div class="col-md-12">
@@ -92,4 +90,4 @@
 
   </footer>
 
-</body>
+<?php include_once("vue/vue_footer.php"); ?>

@@ -4,10 +4,10 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <title>Projet Jobs</title>
+    <title><?= $title_page ?></title>
     <link rel="stylesheet" href="vue/css/style.css">
     <link rel="stylesheet" href="vue/css/bootstrap.min.css">
-    <link rel="stylesheet" href="vue/js/bootstrap.bundle.min.css">
+    <script href="vue/js/bootstrap.bundle.min.js" defer></script>
 </head>
 
 <body>
@@ -52,7 +52,3 @@
         </div>
       </nav>
     </div>
-
-
-</body>
-</html>
