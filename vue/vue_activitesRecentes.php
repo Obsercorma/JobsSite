@@ -14,7 +14,7 @@
                   <div class="d-grid d-md-block text-center">
                       <a href="#" class="btn btn-success mb-3 mx-2">Accepter</a>
                       <a href="#" class="btn btn-outline-danger mb-3 mx-2">Refuser</a>
-                      <a href="#" class="btn btn-primary mb-3 mx-2">Voir le profil</a>
+                      <a href="?section=unEtud" class="btn btn-primary mb-3 mx-2">Voir le profil</a>
                   </div>
                 </div>
             </div>
@@ -30,7 +30,7 @@
                   <div class="d-grid d-md-block text-center">
                       <a href="#" class="btn btn-success mb-3 mx-2">Accepter</a>
                       <a href="#" class="btn btn-outline-danger mb-3 mx-2">Refuser</a>
-                      <a href="#" class="btn btn-primary mb-3 mx-2">Voir le profil</a>
+                      <a href="?section=unEtud" class="btn btn-primary mb-3 mx-2">Voir le profil</a>
                   </div>
               </div>
 

@@ -4,11 +4,11 @@ if (!isset($_GET['section']) OR $_GET['section'] == 'index')
     include_once('controleur/portail.php');
 }else{
 	if ($_GET['section'] == 'login')
-	{  
+	{
 		include_once('controleur/login.php');
 	}
 	elseif ($_GET['section'] == 'dashboardEtud')
-	{  
+	{
 		include_once('controleur/dashboardEtudiant.php');
 	}
 	elseif ($_GET['section'] == 'dashboardEmploi')
@@ -43,7 +43,7 @@ if (!isset($_GET['section']) OR $_GET['section'] == 'index')
 	{
 		include_once('controleur/uneOffre.php');
 	}
-	elseif ($_GET['section'] == 'unEtuds')
+	elseif ($_GET['section'] == 'unEtud')
 	{
 		include_once('controleur/unEtuds.php');
 	}elseif($_GET["section"] == "testmodels"){

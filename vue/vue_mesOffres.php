@@ -2,12 +2,6 @@
     include "vue/vue_entete.php";
 ?>
 
-<head>
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
-    <link rel="stylesheet" href="./js/bootstrap.bundle.min.css">
-</head>
-
 <body>
 
 
