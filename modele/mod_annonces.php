@@ -1,9 +1,14 @@
 <?php
-require_once("./db_connect.php");
+require_once("modele/db_connect.php");
 
 define("TOP_OFFERS_LIMIT", 3); // Affiche les N dernières offres.
 define("SUCCESS_ADDING_OFFER",0); // L'insertion est un succes
 define("INCORRECT_DATA", 1); // Les informations saisi sont incorrects
+define("INCORRECT_TITLE", 2);
+define("INCORRECT_IDACT", 3);
+define("INCORRECT_CONTRACT_TYPE", 4);
+define("INCORRECT_WORK_LOCATION",5);
+define("INCORRECT_DESCRIPTION",6);
 
 /**
  * Récupère les 3 dernières offres
@@ -13,8 +18,8 @@ define("INCORRECT_DATA", 1); // Les informations saisi sont incorrects
 function getTopOffers(){
     $bdd = db_connect();
     if($bdd == null) throw new Exception("Erreur BDD!");
-    $req = $bdd->prepare("SELECT * FROM offre LIMIT ? ORDER BY idOffre ASC");
-    if(!$req->execute(([TOP_OFFERS_LIMIT]))) throw new Exception("Erreur Requête!");
+    $req = $bdd->prepare("SELECT * FROM offre ORDER BY idOffre ASC LIMIT ".TOP_OFFERS_LIMIT);
+    if(!$req->execute()) throw new Exception("Erreur Requête!");
     return $req->fetchAll(PDO::FETCH_ASSOC);
 }
 /**
@@ -70,24 +75,23 @@ function addOffer(
     $bdd = db_connect();
     if($bdd == null) throw new Exception("Erreur BDD!");
 
-    if(!preg_match("/[a-zA-Z0-9\-\s]+/", $titleOffer)) return INCORRECT_DATA;
-    if(!preg_match("/[0-9]{2}/", $idActivity)) return INCORRECT_DATA;
-    if(!preg_match("/[0-9]{2}/", $contractType)) return INCORRECT_DATA;
-    if(!preg_match("/[a-zA-Z0-9à-ü\s]+/", $workLocation)) return INCORRECT_DATA;
-    if(!preg_match("/[a-zA-Z0-9à-ü\s]+/", $descContract)) return INCORRECT_DATA;
+    if(!preg_match("/[a-zA-Z0-9\-\s]+/", $titleOffer)) return INCORRECT_TITLE;
+    if(!preg_match("/[0-9]{1,}/", $idActivity)) return INCORRECT_IDACT;
+    if(!preg_match("/[0-9]{1,}/", $contractType)) return INCORRECT_CONTRACT_TYPE;
+    if(!preg_match("/[a-zA-Z0-9à-ü\s]+/", $workLocation)) return INCORRECT_WORK_LOCATION;
+    if(!preg_match("/[a-zA-Z0-9à-ü\s]+/", $descContract)) return INCORRECT_DESCRIPTION;
     $req = $bdd->prepare("INSERT INTO offre(intitoffre,idAct,lieuTravail,idContrat,debutPeriod,finPeriod,descOffre,idEmployeur) 
     VALUES(:intitOffre,:idAct,:workLocation,:contractType,:debutPeriod,:finPeriod,:descOffre,:idEmployeur)");
     return $req->execute([
         "intitOffre"=>$titleOffer,
         "idAct"=>$idActivity,
+        "workLocation"=>$workLocation,
         "contractType"=>$contractType,
-        "debutOffre"=>$debutPeriod,
+        "debutPeriod"=>$debutPeriod,
         "finPeriod"=>$finPeriod,
         "descOffre"=>$descContract,
         "idEmployeur"=>$idEmployeur
     ]);
 }
-
-echo "<pre>".print_r(getTopOffers(),true)."</pre>";
 
 ?>

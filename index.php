@@ -46,7 +46,10 @@ if (!isset($_GET['section']) OR $_GET['section'] == 'index')
 	elseif ($_GET['section'] == 'unEtuds')
 	{
 		include_once('controleur/unEtuds.php');
-	}else{
+	}elseif($_GET["section"] == "testmodels"){
+		require_once("controleur/TestModels.php");
+	}
+	else{
 		header('location: index.php');
 	}
 }
