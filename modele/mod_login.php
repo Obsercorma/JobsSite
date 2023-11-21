@@ -1,11 +1,17 @@
 <?php
 
-require_once("./db_connect.php");
+require_once("modele/db_connect.php");
 
 define("SUCCESS_AUTH_USER", 0); // Connexion/Inscription utilisateur reussi
+define("USER_INSERTION_SUCCESS",0);
 define("INCORRECT_CREDENTIALS", 1); // Saisi authentification/Inscription incorrect !
-define("USER_ALREADY_EXISTS", 2); // L'utilisateur est deja present dans le BDD.
-define("USER_INSERTION_ERROR", 4);
+define("INCORRECT_NAMES",2);
+define("INCORRECT_EMAIL",3);
+define("INCORRECT_PHONE",4);
+define("INCORRECT_STATUS_WORK",5);
+define("USER_INSERTION_ERROR", 6);
+define("INCORRECT_CIV",7);
+define("USER_ALREADY_EXISTS",8); // L'utilisateur est deja present dans le BDD.
 
 /**
  * Methode d'authentification utilisateur
@@ -18,11 +24,12 @@ function loginUser($useremail, $passwd){
     $bdd = db_connect();
     if($bdd == null) throw new Exception("Erreur BDD!");
 
-    if(!filter_var(FILTER_VALIDATE_EMAIL, $useremail)) throw new Exception("Adresse email malformé !");
+    if(!filter_var($useremail, FILTER_VALIDATE_EMAIL)) throw new Exception("Adresse email malformé !");
 
-    $req = $bdd->prepare("SELECT idUser,prenom,nom,email,idStatut FROM utilisateur WHERE email = ?");
+    $req = $bdd->prepare("SELECT * FROM utilisateur WHERE email = ?");
     if(!$req->execute([$useremail])) return false;
     $data = $req->fetch(PDO::FETCH_ASSOC);
+    if($req->rowCount()==0) return false;
     if(!password_verify($passwd, $data["passwd"])) return false;
 
     if(session_status() === PHP_SESSION_NONE) session_start();
@@ -30,7 +37,7 @@ function loginUser($useremail, $passwd){
     $_SESSION["prenom"] = $data["prenom"];
     $_SESSION["nom"] = $data["nom"];
     $_SESSION["email"] = $data["email"];
-    $_SESSION["status"] = $data["idStatus"];
+    $_SESSION["status"] = $data["idStatut"];
     return true;
 }
 /**
@@ -57,27 +64,30 @@ function registerUser(
     if($bdd == null) throw new Exception("Erreur BDD!");
 
     if(
-        !preg_match("/[a-zA-Z0-9\- ]+/", $nom) or
-        !preg_match("/[a-zA-Z0-9\- ]+/", $prenom)
-    ) throw new Exception("Nom ou prénom mal formé !");
-    if(!preg_match("/[a-zA-Z]+/", $civ)) return INCORRECT_CREDENTIALS;
-    if(!filter_var($email, FILTER_VALIDATE_EMAIL)) return INCORRECT_CREDENTIALS;
-    if(!preg_match("/[0-9]+/", $tel)) return INCORRECT_CREDENTIALS;
-    if(($idStatut=intval($statut))==0) return INCORRECT_CREDENTIALS;
+        !preg_match("/[a-zA-Z0-9\-\w]+/", $nom) or
+        !preg_match("/[a-zA-Z0-9\-\w]+/", $prenom)
+    ) return INCORRECT_NAMES;
+    if(!preg_match("/[0-9]{1}+/", $civ)) return INCORRECT_CIV;
+    if(!filter_var($email, FILTER_VALIDATE_EMAIL)) return INCORRECT_EMAIL;
+    if(!preg_match("/[0-9]+/", $tel)) return INCORRECT_PHONE;
+    if(($idStatut=intval($statut))==0) return INCORRECT_STATUS_WORK;
 
     $reqVerify = $bdd->prepare("SELECT idUser FROM utilisateur WHERE email = ?");
-    if(!$reqVerify->execute()) throw new Exception("Impossible de verifier si un utilisateur est deja present dans le BDD.");
+    if(!$reqVerify->execute([$email])) throw new Exception("Impossible de verifier si un utilisateur est deja present dans le BDD.");
     $reqVerify->fetch();
-    if(!$reqVerify->rowCount()>0) return USER_ALREADY_EXISTS;
+    if($reqVerify->rowCount()>0) return USER_ALREADY_EXISTS;
 
-    $req = $bdd->prepare("INSERT INTO utilisateur(nom,prenom,email,passwd,tel,idStatut) VALUES(:nom,:prenom,:email,:passwd,:tel,:statut)");
+    $req = $bdd->prepare("INSERT INTO utilisateur(civilite,nom,prenom,email,passwd,tel,idStatut) 
+    VALUES(:civilite,:nom,:prenom,:email,:passwd,:tel,:statut)");
     if(!$req->execute([
         "nom"=>$nom,
         "prenom"=>$prenom,
+        "civilite"=>$civ,
         "email"=>$email,
         "passwd"=>password_hash($passwd, PASSWORD_BCRYPT),
         "tel"=>$tel,
         "statut"=>$statut
     ])) return USER_INSERTION_ERROR;
+    return USER_INSERTION_SUCCESS;
 }
 ?>
