@@ -6,7 +6,7 @@ require_once("./db_connect.php");
  * @param int $idEmployer Identifiant de l'employeur
  * @return array Liste des offres crées par l'employeur
  * fonction de son identifiant.
- * @deprecated
+ * 
  */
 function getOffersFromEmployer($idEmployer){
     $bdd = db_connect();
@@ -22,7 +22,7 @@ function getOffersFromEmployer($idEmployer){
  * @param int $idStudent Identifiant de l'étudiant
  * @return array Liste des candidatures crées par l'étudiant
  * fonction de son identifiant.
- * @deprecated
+ * 
  */
 function getApplicationsFromStudent($idStudent){
     $bdd = db_connect();
