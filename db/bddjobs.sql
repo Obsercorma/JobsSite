@@ -42,7 +42,22 @@ INSERT INTO `activite` (`idAct`, `intitAct`) VALUES
 (2, 'Agroalimentaire'),
 (3, 'Aide à domicile'),
 (1, 'Autres'),
-(4, 'Transports / Logistique');
+(4, 'Banque / Assurance'),
+(5, 'Bois / Papier / Carton / Imprimerie'),
+(6, 'BTP / Matériaux de construction'),
+(7, 'Chimie / Parachimie'),
+(8, 'Commerce / Négoce / Distribution'),
+(9, 'Édition / Communication / Multimédia'),
+(10, 'Électronique / Électricité'),
+(11, 'Études et conseils'),
+(12, 'Industrie pharmaceutique'),
+(13, 'Informatique / Télécoms'),
+(14, 'Machines et équipements / Automobile'),
+(15, 'Métallurgie / Travail du métal'),
+(16, 'Plastique / Caoutchouc'),
+(17, 'Services aux entreprises'),
+(18, 'Textile / Habillement / Chaussure'),
+(19, 'Transports / Logistique');
 
 -- --------------------------------------------------------
 
@@ -199,7 +214,8 @@ CREATE TABLE `utilisateur` (
 INSERT INTO `utilisateur` (`idUser`, `civilite`, `nom`, `prenom`, `email`, `passwd`, `tel`, `imgUser`, `cvUser`, `idStatut`, `bio`) VALUES
 (1, 1, 'Baroche', 'Mael', 'test@mail.com', '1234', '0123456789', 'defaultUser.png', NULL, 1, NULL),
 (2, 1, 'Baroche', 'Nael', 'test@exemple.com', '6789', '0102030405', 'defaultUser.png', NULL, 2, NULL),
-(3, 1, 'Onyme', 'Anne', 'aa', 'a', '0987654321', 'defaultUser.png', NULL, 3, NULL),
+(3, 2, 'Onyme', 'Anne', 'aa', 'a', '0987654321', 'defaultUser.png', NULL, 3, NULL),
+(4, 3, 'Maroche', 'Baël', 'exemple@mail.org', '9516', '0624931567', '\'user.png\'', NULL, 3, NULL);
 (6, 1, 'L\'Observateur', 'TechRusse', 'techrusse@mythologicarte.fr', '$2y$10$e/puVD63PiKLI0ZpgMtkJeU0IVxoXBZzEzWdtXjGMLwhPyM5Y/AYe', '0123456788', 'defaultUser.png', NULL, 3, NULL);
 
 --
