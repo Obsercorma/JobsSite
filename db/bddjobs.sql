@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : mer. 08 nov. 2023 à 18:54
--- Version du serveur : 10.4.24-MariaDB
--- Version de PHP : 8.1.6
+-- Généré le : mar. 21 nov. 2023 à 15:42
+-- Version du serveur : 10.4.22-MariaDB
+-- Version de PHP : 7.4.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -110,7 +110,8 @@ INSERT INTO `offre` (`idOffre`, `intitoffre`, `idAct`, `lieuTravail`, `idContrat
 (1, 'Caissier H/F E.Leclerc', 2, 'Auchan', 1, '2023-11-11', '2023-11-11', 'À l\'aide.', 2, 0),
 (2, 'Livreur GLS', 4, 'France', 2, '2023-12-11', '2024-01-19', 'Permis B Requis.', 3, 0),
 (3, 'Garde Enfant', 3, '42 Rue de l\'Infini', 3, '2023-11-10', NULL, 'Tout les Week-end 18h-22h', 2, 0),
-(4, 'Livreur de stupéfiants', 2, 'France', 1, '2023-11-17', NULL, 'Rdv 20h45 Place de l\'Étoile', 3, 0);
+(4, 'Livreur de stupéfiants', 2, 'France', 1, '2023-11-17', NULL, 'Rdv 20h45 Place de l\'Étoile', 3, 0),
+(12, 'Offre test', 1, 'Lieu de test', 1, '2023-11-23', '2023-11-25', 'Description de test', 2, 0);
 
 -- --------------------------------------------------------
 
@@ -198,7 +199,8 @@ CREATE TABLE `utilisateur` (
 INSERT INTO `utilisateur` (`idUser`, `civilite`, `nom`, `prenom`, `email`, `passwd`, `tel`, `imgUser`, `cvUser`, `idStatut`, `bio`) VALUES
 (1, 1, 'Baroche', 'Mael', 'test@mail.com', '1234', '0123456789', 'defaultUser.png', NULL, 1, NULL),
 (2, 1, 'Baroche', 'Nael', 'test@exemple.com', '6789', '0102030405', 'defaultUser.png', NULL, 2, NULL),
-(3, 1, 'Onyme', 'Anne', 'aa', 'a', '0987654321', 'defaultUser.png', NULL, 3, NULL);
+(3, 1, 'Onyme', 'Anne', 'aa', 'a', '0987654321', 'defaultUser.png', NULL, 3, NULL),
+(6, 1, 'L\'Observateur', 'TechRusse', 'techrusse@mythologicarte.fr', '$2y$10$e/puVD63PiKLI0ZpgMtkJeU0IVxoXBZzEzWdtXjGMLwhPyM5Y/AYe', '0123456788', 'defaultUser.png', NULL, 3, NULL);
 
 --
 -- Index pour les tables déchargées
@@ -283,7 +285,7 @@ ALTER TABLE `civilites`
 -- AUTO_INCREMENT pour la table `offre`
 --
 ALTER TABLE `offre`
-  MODIFY `idOffre` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idOffre` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT pour la table `statut`
@@ -307,7 +309,7 @@ ALTER TABLE `typecontrat`
 -- AUTO_INCREMENT pour la table `utilisateur`
 --
 ALTER TABLE `utilisateur`
-  MODIFY `idUser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idUser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Contraintes pour les tables déchargées
