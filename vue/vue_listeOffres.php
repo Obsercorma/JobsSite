@@ -11,7 +11,7 @@
 <body>
 
 
-      <h1 class="text-center text-white">Mes offres</h1>
+      <h1 class="text-center text-white">Les offres</h1>
 
     <div class="cards">
       <div class="row justify-content-around">

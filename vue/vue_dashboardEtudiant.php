@@ -1,4 +1,4 @@
-<?php 
+<?php
     include "vue/vue_entete.php";
 ?>
 
@@ -19,6 +19,6 @@
             </div>
         </div>
     </section>
-    <a href="index.php?section=lesOffres" class="btn btn-light mb-3">Découvrir les offres</a>
+    <a href="index.php?section=lesOffres" class="btn btn-primary mb-3 mt-4">Découvrir les offres</a>
 </body>
 </html>
