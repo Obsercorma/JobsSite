@@ -1,5 +1,5 @@
 <?php 
-    include "vue/vue_entete.php";
+    include("./vue_entete.php");
 ?>
 <br>
 
@@ -89,4 +89,4 @@
 
       </div>
 
-<?php include_once("vue/vue_footer.php"); ?>
+<?php include_once("./vue_footer.php"); ?>
