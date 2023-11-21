@@ -11,7 +11,7 @@
 </head>
 
 <body>
-  <div>
+  <div class="row">
         <div>
             <img src="" title="logo">
             <a href="#"></a>
@@ -43,8 +43,8 @@
 <!-- CONNEXION / INSCRIPTION  ------------------------------------------------------------------------------>
             <div class="col-4 align-self-end">
               <div class="">
-                  <button><a href="index.php?section=dashboardEtud">Se Connecter(tableau de bord étudiant)</a></button>
-                  <button><a href="index.php?section=dashboardEmploi">S'inscrire (tableau de bord employeur)</a></button>
+                  <a href="index.php?section=dashboardEtud" class="btn btn-primary">Se Connecter</a>
+                  <a href="index.php?section=dashboardEmploi" class="btn btn-primary">S'inscrire</a>
               </div>
             </div>
 
