@@ -1,16 +1,7 @@
 <?php
 
-require_once("modele/mod_annonces.php");
+require_once("modele/mod_etudiants.php");
 
-echo "<pre>".print_r(addOffer(
-    "Offre test",
-    '1',
-    "Lieu de test",
-    '1',
-    "2023-11-23",
-    "2023-11-25",
-    '2',
-    "Description de test",
-),true)."</pre>";
+echo "<pre>".print_r(getApplicationsFromStudent(2),true)."</pre>";
 
 ?>
