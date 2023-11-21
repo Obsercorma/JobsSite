@@ -88,4 +88,6 @@ function addOffer(
     ]);
 }
 
+echo "<pre>".print_r(getTopOffers(),true)."</pre>";
+
 ?>

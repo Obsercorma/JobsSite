@@ -6,7 +6,7 @@
 function db_connect(){
     $db_host = "localhost";
     $db_name = "bddjobs";
-    $db_charset = "utf-8";
+    $db_charset = "utf8";
     $db_user = "bddjobs_user";
     $db_passwd = "XhcwCxyEH/tBo@nH";
     try{
@@ -14,7 +14,7 @@ function db_connect(){
         $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         return $bdd;
     }catch(PDOException $e){
-        // echo $e->getMessage();
+        echo $e->getMessage();
         return null;
     }
 
