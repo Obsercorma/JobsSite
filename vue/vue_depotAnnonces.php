@@ -1,6 +1,7 @@
 <?php 
-    include("./vue_entete.php");
+    include "vue/vue_entete.php";
 ?>
+<body>
 <br>
 
     <h1 class="text-center text-white">Déposer une annonce</h1>
@@ -47,6 +48,16 @@
               <label for="floatingInput">Lieu de travail</label>
             </div>
 
+            <div class="form-floating mb-3">
+              <input type="date" class="form-control form-control-sm" id="floatingInput" placeholder="name@example.com">
+              <label for="floatingInput">Début de la période de travail</label>
+            </div>
+
+            <div class="form-floating mb-3">
+              <input type="date" class="form-control form-control-sm" id="floatingInput" placeholder="name@example.com">
+              <label for="floatingInput">Fin de la période de travail</label>
+            </div>
+
             <div class="mb-3 bg-white rounded-1">
               <label>Type de contrat</label>
 <br>
@@ -77,10 +88,11 @@
 <div class="vr border-3 border border-dark rounded-4 p-0"></div>
 
         <div class="col-md-6">
+          
 
-          <div class="form-floating">
-            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+        <div class="form-group">
             <label for="floatingTextarea">Description de l'annonce</label>
+            <textarea class="form-control rs-none" id="exampleFormControlTextarea1" rows="10"></textarea>
           </div>
 
         </div>
@@ -89,4 +101,8 @@
 
       </div>
 
-<?php include_once("./vue_footer.php"); ?>
+
+
+  </body>
+
+</html>
