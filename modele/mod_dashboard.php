@@ -1,6 +1,6 @@
 <?php
 
-require_once("./db_connect.php");
+require_once("modele/db_connect.php");
 
 /**
  * @param int $idEmployer Identifiant de l'employeur
@@ -16,6 +16,7 @@ function getOffersFromEmployer($idEmployer){
     if(!$req->execute([
         $idEmployer
     ]))
+    if($req->rowCount()==0) return [];
     return $req->fetchAll(PDO::FETCH_ASSOC);
 }
 /**
