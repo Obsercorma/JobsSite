@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : mar. 28 nov. 2023 à 14:44
+-- Généré le : mar. 28 nov. 2023 à 17:43
 -- Version du serveur : 10.4.22-MariaDB
 -- Version de PHP : 7.4.27
 
@@ -42,22 +42,7 @@ INSERT INTO `activite` (`idAct`, `intitAct`) VALUES
 (2, 'Agroalimentaire'),
 (3, 'Aide à domicile'),
 (1, 'Autres'),
-(4, 'Banque / Assurance'),
-(5, 'Bois / Papier / Carton / Imprimerie'),
-(6, 'BTP / Matériaux de construction'),
-(7, 'Chimie / Parachimie'),
-(8, 'Commerce / Négoce / Distribution'),
-(9, 'Édition / Communication / Multimédia'),
-(10, 'Électronique / Électricité'),
-(11, 'Études et conseils'),
-(12, 'Industrie pharmaceutique'),
-(13, 'Informatique / Télécoms'),
-(14, 'Machines et équipements / Automobile'),
-(15, 'Métallurgie / Travail du métal'),
-(16, 'Plastique / Caoutchouc'),
-(17, 'Services aux entreprises'),
-(18, 'Textile / Habillement / Chaussure'),
-(19, 'Transports / Logistique');
+(4, 'Transports / Logistique');
 
 -- --------------------------------------------------------
 
@@ -114,20 +99,18 @@ CREATE TABLE `offre` (
   `finPeriod` date DEFAULT NULL,
   `descOffre` text NOT NULL,
   `idEmployeur` int(11) NOT NULL,
-  `idValidation` tinyint(1) NOT NULL DEFAULT 0,
-  `datePublication` date NOT NULL DEFAULT current_timestamp()
+  `idValidation` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `offre`
 --
 
-INSERT INTO `offre` (`idOffre`, `intitoffre`, `idAct`, `lieuTravail`, `idContrat`, `debutPeriod`, `finPeriod`, `descOffre`, `idEmployeur`, `idValidation`, `datePublication`) VALUES
-(1, 'Caissier H/F E.Leclerc', 2, 'Auchan', 1, '2023-11-11', '2023-11-11', 'À l\'aide.', 2, 0, '2023-11-14'),
-(2, 'Livreur GLS', 4, 'France', 2, '2023-12-11', '2024-01-19', 'Permis B Requis.', 3, 0, '2023-11-21'),
-(3, 'Garde Enfant', 3, '42 Rue de l\'Infini', 3, '2023-11-10', NULL, 'Tout les Week-end 18h-22h', 2, 0, '2023-11-12'),
-(4, 'Livreur de stupéfiants', 2, 'France', 1, '2023-11-17', NULL, 'Rdv 20h45 Place de l\'Étoile', 3, 0, '2023-11-17'),
-(12, 'Offre test', 1, 'Lieu de test', 1, '2023-11-23', '2023-11-25', 'Description de test', 2, 0, '2023-11-28');
+INSERT INTO `offre` (`idOffre`, `intitoffre`, `idAct`, `lieuTravail`, `idContrat`, `debutPeriod`, `finPeriod`, `descOffre`, `idEmployeur`, `idValidation`) VALUES
+(1, 'Caissier H/F E.Leclerc', 2, 'Auchan', 1, '2023-11-11', '2023-11-11', 'À l\'aide.', 2, 0),
+(2, 'Livreur GLS', 4, 'France', 2, '2023-12-11', '2024-01-19', 'Permis B Requis.', 3, 0),
+(3, 'Garde Enfant', 3, '42 Rue de l\'Infini', 3, '2023-11-10', NULL, 'Tout les Week-end 18h-22h', 2, 0),
+(4, 'Livreur de stupéfiants', 2, 'France', 1, '2023-11-17', NULL, 'Rdv 20h45 Place de l\'Étoile', 3, 0);
 
 -- --------------------------------------------------------
 
@@ -213,11 +196,11 @@ CREATE TABLE `utilisateur` (
 --
 
 INSERT INTO `utilisateur` (`idUser`, `civilite`, `nom`, `prenom`, `email`, `passwd`, `tel`, `imgUser`, `cvUser`, `idStatut`, `bio`) VALUES
-(1, 1, 'Baroche', 'Mael', 'test@mail.com', '1234', '0123456789', 'defaultUser.png', NULL, 1, NULL),
-(2, 1, 'Baroche', 'Nael', 'test@exemple.com', '6789', '0102030405', 'defaultUser.png', NULL, 2, NULL),
-(3, 2, 'Onyme', 'Anne', 'aa', 'a', '0987654321', 'defaultUser.png', NULL, 3, NULL),
-(4, 3, 'Maroche', 'Baël', 'exemple@mail.org', '9516', '0624931567', '\'user.png\'', NULL, 3, NULL),
-(6, 1, 'L\'Observateur', 'TechRusse', 'techrusse@mythologicarte.fr', '$2y$10$e/puVD63PiKLI0ZpgMtkJeU0IVxoXBZzEzWdtXjGMLwhPyM5Y/AYe', '0123456788', 'defaultUser.png', NULL, 3, NULL);
+(1, 1, 'Baroche', 'Mael', 'test@mail.com', '$2y$10$L8iD5pdsTiU8OKARXJlQbeZCspr9RLOnr2F.RKKLwr5wj10md.Gl.', '0123456789', 'defaultUser.png', NULL, 1, NULL),
+(2, 1, 'Baroche', 'Nael', 'test@exemple.com', '$2y$10$4Sy85JVNEv6g9rXZYM7qp.C620rAYcqYsDDnogrw8DcOS1RjohII6', '0102030405', 'defaultUser.png', NULL, 2, NULL),
+(3, 1, 'Onyme', 'Anne', 'aa', 'a', '0987654321', 'defaultUser.png', NULL, 3, NULL),
+(5, 1, 'testNom', 'Testprenom', 'testuser2@example.org', '$2y$10$l3ZGvWCGwlifRYRNFVAkyePrdbL0PgwHQtUnWuYBX.0aOnttflNKK', '0612345678', 'defaultUser.png', NULL, 1, NULL),
+(6, 3, 'testSecond', 'Second', 'second@example.org', '$2y$10$Lc21nO2T664v96yr3zyARupb8SI.TKzoGSbqYH.JNW03GxV7F57Sq', '0255674586', 'defaultUser.png', NULL, 2, NULL);
 
 --
 -- Index pour les tables déchargées
@@ -290,7 +273,7 @@ ALTER TABLE `utilisateur`
 -- AUTO_INCREMENT pour la table `activite`
 --
 ALTER TABLE `activite`
-  MODIFY `idAct` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `idAct` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT pour la table `civilites`
@@ -302,7 +285,7 @@ ALTER TABLE `civilites`
 -- AUTO_INCREMENT pour la table `offre`
 --
 ALTER TABLE `offre`
-  MODIFY `idOffre` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `idOffre` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT pour la table `statut`
