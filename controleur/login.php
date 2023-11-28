@@ -16,8 +16,8 @@ if(isset(
         $_SESSION["prenom"] = $data["prenom"];
         $_SESSION["nom"] = $data["nom"];
         $_SESSION["email"] = $data["email"];
-        $_SESSION["status"] = $data["idStatus"];
-        if($data["idStatus"] == 1) header("Location: ?section=dashboardEtud");
+        $_SESSION["status"] = $data["idStatut"];
+        if($data["idStatut"] == 1) header("Location: ?section=dashboardEtud");
         else header("Location: ?section=dashboardEmploi");
     }else{
         $errMesgConnect = "L'identifiant ou le mot de passe est incorrect !";
