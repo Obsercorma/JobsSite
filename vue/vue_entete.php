@@ -12,18 +12,12 @@
 
 <body>
   <div class="row">
-        <div>
-            <img src="" title="logo">
-            <a href="#"></a>
-        </div>
-
-
         <nav class="navbar">
           <div class="container-fluid">
 
             <div class="row justify-content-between">
               <div class="col-4">
-                <a class="navbar-brand">
+                <a class="navbar-brand" href="index.php">
                   <img src="vue/images/logoJobsEtudiant.jpg" class="logoEntete">
                 </a>
               </div>
