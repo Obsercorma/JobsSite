@@ -18,27 +18,20 @@ define("USER_ALREADY_EXISTS",8); // L'utilisateur est deja present dans le BDD.
  * La creation de la session est geré en cas de succes
  * @param string $useremail Nom d'utilisateur
  * @param string $passwd Mot de passe
- * @return bool Retourne vrai si l'authentification est un succes
+ * @return array|false Retourne les informations si l'authentification est un succes
  */
 function loginUser($useremail, $passwd){
     $bdd = db_connect();
     if($bdd == null) throw new Exception("Erreur BDD!");
 
-    if(!filter_var($useremail, FILTER_VALIDATE_EMAIL)) throw new Exception("Adresse email malformé !");
+    if(!filter_var($useremail, FILTER_VALIDATE_EMAIL)) return false;
 
     $req = $bdd->prepare("SELECT * FROM utilisateur WHERE email = ?");
     if(!$req->execute([$useremail])) return false;
     $data = $req->fetch(PDO::FETCH_ASSOC);
     if($req->rowCount()==0) return false;
     if(!password_verify($passwd, $data["passwd"])) return false;
-
-    if(session_status() === PHP_SESSION_NONE) session_start();
-    $_SESSION["idUser"] = $data["idUser"];
-    $_SESSION["prenom"] = $data["prenom"];
-    $_SESSION["nom"] = $data["nom"];
-    $_SESSION["email"] = $data["email"];
-    $_SESSION["status"] = $data["idStatut"];
-    return true;
+    return $data;
 }
 /**
  * @param string $nom
@@ -48,7 +41,7 @@ function loginUser($useremail, $passwd){
  * @param string $tel
  * @param int $statut (Est etudiant ou autre...)
  * @param string $passwd Mot de passe
- * @throws Exception
+ * @throws PDOException
  * @return int Retourne un des codes definies au debut de ce fichier. ligne:5
  */
 function registerUser(

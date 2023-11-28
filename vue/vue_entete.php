@@ -43,8 +43,7 @@
 <!-- CONNEXION / INSCRIPTION  ------------------------------------------------------------------------------>
             <div class="col-4 align-self-end">
               <div class="">
-                  <a href="index.php?section=dashboardEtud" class="btn btn-primary">Se Connecter</a>
-                  <a href="index.php?section=dashboardEmploi" class="btn btn-primary">S'inscrire</a>
+                <a href="index.php?section=<?= $isConnected ? "logout" : "login" ?>" class="btn btn-primary"><?= $isConnected ? "Se déconecter" : "Se Connecter/S'inscrire" ?></a>
               </div>
             </div>
 
