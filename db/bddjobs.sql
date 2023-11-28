@@ -215,7 +215,7 @@ INSERT INTO `utilisateur` (`idUser`, `civilite`, `nom`, `prenom`, `email`, `pass
 (1, 1, 'Baroche', 'Mael', 'test@mail.com', '1234', '0123456789', 'defaultUser.png', NULL, 1, NULL),
 (2, 1, 'Baroche', 'Nael', 'test@exemple.com', '6789', '0102030405', 'defaultUser.png', NULL, 2, NULL),
 (3, 2, 'Onyme', 'Anne', 'aa', 'a', '0987654321', 'defaultUser.png', NULL, 3, NULL),
-(4, 3, 'Maroche', 'Baël', 'exemple@mail.org', '9516', '0624931567', '\'user.png\'', NULL, 3, NULL);
+(4, 3, 'Maroche', 'Baël', 'exemple@mail.org', '9516', '0624931567', '\'user.png\'', NULL, 3, NULL),
 (6, 1, 'L\'Observateur', 'TechRusse', 'techrusse@mythologicarte.fr', '$2y$10$e/puVD63PiKLI0ZpgMtkJeU0IVxoXBZzEzWdtXjGMLwhPyM5Y/AYe', '0123456788', 'defaultUser.png', NULL, 3, NULL);
 
 --
