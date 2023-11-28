@@ -1,4 +1,4 @@
-<footer class="pb-4 col-12 bg-dark text-white mt-5">
+<footer class="position-absolute top-100 start-50 translate-middle-x pb-4 col-12 bg-dark text-white mt-5">
 
       <div class="container text-center">
   <br>
