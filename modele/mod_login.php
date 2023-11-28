@@ -42,7 +42,7 @@ function loginUser($useremail, $passwd){
  * @param int $statut (Est etudiant ou autre...)
  * @param string $passwd Mot de passe
  * @throws PDOException
- * @return int Retourne un des codes definies au debut de ce fichier. ligne:5
+ * @return array|int Retourne un des codes definies au debut de ce fichier. ligne:5
  */
 function registerUser(
     $nom,
@@ -81,6 +81,8 @@ function registerUser(
         "tel"=>$tel,
         "statut"=>$statut
     ])) return USER_INSERTION_ERROR;
-    return USER_INSERTION_SUCCESS;
+    $reqId = $bdd->prepare("SELECT idUser FROM utilisateur WHERE email = ?");
+    if(!$reqId->execute([$email])) return INCORRECT_EMAIL;
+    return $reqId->fetch(PDO::FETCH_ASSOC);
 }
 ?>
