@@ -1,6 +1,6 @@
 <?php
 
-require_once("./db_connect.php");
+require_once("modele/db_connect.php");
 
 //TODO: Define into DB professionals id status
 define("STUDENT_ID", 1); // Etudiant
@@ -31,10 +31,11 @@ function getStudent($idStudent){
     if($bdd == null) throw new Exception("Erreur BDD!");
 
     // Prefer: Keep regex check if 'id student' type or structure has changed
-    if(!preg_match("/[0-9]+/", $idStudent)) throw new Exception("Identifiant utilisateur incorrect (doit être numérique");
+    if(!preg_match("/[0-9]{1,}+/", $idStudent)) throw new Exception("Identifiant utilisateur incorrect (doit être numérique");
 
-    $req = $bdd->prepare("SELECT * FROM utilisateur WHERE idUser AND idStatut = 1");
+    $req = $bdd->prepare("SELECT * FROM utilisateur WHERE idUser = ? AND idStatut = 1");
     if(!$req->execute([$idStudent])) throw new Exception("Etudiant introuvable !");
+    if($req->rowCount()==0) return [];
     return $req->fetch(PDO::FETCH_ASSOC);
 }
 /**
@@ -48,7 +49,42 @@ function getEmployer($idEmployer){
 
     $req = $bdd->prepare("SELECT * FROM utilisateur WHERE idUser = ? AND idStatut > 1");
     if(!$req->execute([$idEmployer])) throw new Exception("Employeur introuvable");
-
+    if($req->rowCount()==0) return [];
     return $req->fetch(PDO::FETCH_ASSOC);
+}
+/**
+ * @param int $idStudent Identifiant de l'étudiant
+ * @return array Liste des candidatures crées par l'étudiant
+ * fonction de son identifiant.
+ * 
+ */
+function getApplicationsFromStudent($idStudent){
+    $bdd = db_connect();
+    if($bdd == null) throw new Exception("Erreur BDD!");
+    if(!preg_match("/^[0-9]{1,2}/", $idStudent)) throw new Exception("Identifiant inconnue ou mal formé !");
+    $req = $bdd->prepare("SELECT C.idEtudiant, O.* FROM candidature C INNER JOIN offre O ON C.idOffre = O.idOffre WHERE idEtudiant = ?");
+    if(!$req->execute([
+        $idStudent
+    ])) throw new Exception("Erreur DB: Selection !");
+    if($req->rowCount()==0) return [];
+    return $req->fetchAll(PDO::FETCH_ASSOC);
+}
+
+/**
+ * Recupère la liste des offres où l'étudiant a postulé.
+ * @param ?int $idStudent Identifiant étudiant.
+ * @return array Liste des offres où l'étudiant a postulé.
+ * @throws Exception
+ */
+function getRequestedOffersFromStudent($idStudent){
+    $bdd = db_connect();
+    if($bdd == null) throw new Exception("Erreur BDD!");
+    if(!preg_match("/^[0-9]{1,2}/", $idStudent)) throw new Exception("Identifiant inconnue ou mal formé !");
+    $req = $bdd->prepare("SELECT O.* FROM candidature C 
+    INNER JOIN offre O ON O.idOffre = C.idOffre 
+    WHERE C.idEtudiant = ?");
+    if(!$req->execute([$idStudent])) throw new Exception("Erreur DB: Selection !");
+    if($req->rowCount()==0) return [];
+    return $req->fetchAll(PDO::FETCH_ASSOC);
 }
 ?>

@@ -1,11 +1,12 @@
 <?php
 
-require_once("./db_connect.php");
+require_once("modele/db_connect.php");
 
 /**
  * @param int $idEmployer Identifiant de l'employeur
  * @return array Liste des offres crées par l'employeur
  * fonction de son identifiant.
+ * 
  */
 function getOffersFromEmployer($idEmployer){
     $bdd = db_connect();
@@ -15,12 +16,14 @@ function getOffersFromEmployer($idEmployer){
     if(!$req->execute([
         $idEmployer
     ]))
+    if($req->rowCount()==0) return [];
     return $req->fetchAll(PDO::FETCH_ASSOC);
 }
 /**
  * @param int $idStudent Identifiant de l'étudiant
  * @return array Liste des candidatures crées par l'étudiant
  * fonction de son identifiant.
+ * 
  */
 function getApplicationsFromStudent($idStudent){
     $bdd = db_connect();
