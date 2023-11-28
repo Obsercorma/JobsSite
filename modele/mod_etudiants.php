@@ -18,6 +18,7 @@ function getAllStudents(){
 
     $req = $bdd->prepare("SELECT * FROM utilisateur WHERE idStatut = 1");
     if(!$req->execute()) throw new Exception("Erreur: Recuperation ensemble des etudiants");
+    if($req->rowCount()==0) return [];
     return $req->fetchAll(PDO::FETCH_ASSOC);
 }
 
