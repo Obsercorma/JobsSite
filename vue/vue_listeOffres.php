@@ -1,63 +1,53 @@
 <?php
     include "vue/vue_entete.php";
 ?>
-
-<body>
-
-
-      <h1 class="text-center text-white">Les offres</h1>
-
-    <div class="cards">
-      <div class="row justify-content-around">
+    <h1 class="title fw-bold">Liste offres</h1>
 
 
-          <div class="card bg-dark bg-opacity-25 text-white rounded border-dark border-3 col-3">
-            <img src="vue/images/user.png" class="card-img-top">
-            <div class="card-body">
-              <h3 class="card-title">Caissier F/H E.Leclerc</h3>
-              <h6>Secteur : <u>Grande distribution</u></h6>
-              <br>
-              <p class="card-text">Votre mission consiste à encaisser les clients de notre magasin, lors de leur passage en caisse.
-                                    Expérience passée dans le domaine de la vente est un plus !</p>
-              <div class="d-flex flex-nowrap justify-content-between">
-                <a href="#" class="btn btn-primary col-6 btn-lg me-2">Postuler</a>
+    <section class="list-students">
 
-              </div>
-            </div>
+
+      <div class="cards">
+          <div class="row justify-content-around mb-3">
+
+                      <?php
+                            $comptage = 0;
+
+                            foreach($lesOffres as $uneOffre)
+                            {
+                              $idOffre = $uneOffre['idOffre'];
+                              $intitOffre = $uneOffre['intitoffre'];
+                              $secteur = $uneOffre['intitAct'];
+                              $description = $uneOffre['descOffre'];
+                      ?>
+                                <div class="card text-center fw-bold col-3 border-3 border-dark">
+                                    <div class="card-body d-flex flex-column justify-content-center align-items-center">
+                                        <img src="vue/images/user.png" alt="Etudiant" class="img-student w-75">
+                                        <h3 class="student-name"><?= $intitOffre ?></h3>
+                                        <h5 class="student-name">Secteur : <?= $secteur ?></h5>
+                                    </div>
+                                    <div class="card-footer">
+                                       <p class="card-text"><?= $description ?></p>
+                                       <a href="index.php?section=uneOffre&idOffre=<?= $idOffre ?>" class="btn btn-primary fw-bold border-2">En savoir plus</a>
+                                    </div>
+                                </div>
+                      <?php
+                              $comptage++;
+                              if ($comptage>=3){
+                                $comptage = 0;
+                      ?>
+                                </div>
+                              </div>
+                                <div class="cards">
+                                  <div class="row justify-content-around mb-3">
+                      <?php
+                              }
+                            }
+                      ?>
+
           </div>
+      </div>
 
+  </section>
 
-          <div class="card bg-dark bg-opacity-25 text-white rounded border-dark border-3 col-3">
-            <img src="vue/images/user.png" class="card-img-top">
-            <div class="card-body">
-              <h3 class="card-title">Assistant F/H de récolte</h3>
-              <h6>Secteur : <u>Agroalimentaire</u></h6>
-              <br>
-              <p class="card-text">Votre mission consiste à récolter préparer laver et trier les produits de nos producteurs</p>
-              <div class="d-flex flex-nowrap justify-content-between">
-                <a href="#" class="btn btn-primary col-6 btn-lg me-2">Postuler</a>
-
-              </div>
-            </div>
-          </div>
-
-          <div class="card bg-dark bg-opacity-25 text-white rounded border-dark border-3 col-3">
-            <img src="vue/images/user.png" class="card-img-top">
-            <div class="card-body">
-              <h3 class="card-title">Caissier F/H E.Leclerc</h3>
-              <h6>Secteur : <u>Grande distribution</u></h6>
-              <br>
-              <p class="card-text">Votre mission consiste à encaisser les clients de notre magasin, lors de leur passage en caisse.
-                                    Expérience passée dans le domaine de la vente est un plus !</p>
-              <div class="d-flex flex-nowrap justify-content-between">
-                <a href="#" class="btn btn-primary col-6 btn-lg me-2">Postuler</a>
-              </div>
-            </div>
-          </div>
-    </div>
-  </div>
-
-
-
-</body>
-</html>
+<?php include_once("vue/vue_footer.php"); ?>

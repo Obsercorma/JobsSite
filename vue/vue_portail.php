@@ -39,35 +39,29 @@
     <h4 class="text text-center">Nos derniers jobs</h4>
 
     <div class="row">
-      <div class="col-md-4 text-center">
-        <img src="vue/images/user.png" title="image-theme" width="50%">
-        <br><br>
-        <p><b>offre 1</b></p>
-        <p>Date de publication?</p>
-      </div>
 
-      <div class="col-md-4 text-center">
-        <img src="vue/images/user.png" title="image-theme" width="50%">
-        <br><br>
-        <p><b>offre 2</b></p>
-        <p>Date de publication?</p>
-      </div>
-
-      <div class="col-md-4 text-center">
-        <img src="vue/images/user.png" title="image-theme" width="50%">
-        <br><br>
-        <p><b>offre 3</b></p>
-        <p>Date de publication?</p>
-      </div>
-    </div>
-
+      <?php
+          foreach ($dernieresAnnonces as $annonces)
+          {
+            $intitOffre = $annonces['intitoffre'];
+            $datePublication = $annonces['datePublication'];
+      ?>
+            <div class="col-md-4 text-center">
+              <img src="vue/images/user.png" title="image-theme" width="50%">
+              <br><br>
+              <p><b><?= $intitOffre ?></b></p>
+              <p><?= $datePublication ?></p>
+            </div>
+      <?php
+          }
+       ?>
 
         <div class="text text-center">
-          <a class="btn btn-primary" href="#" role="button">Découvrir toutes les offres</a>
+          <a class="btn btn-primary" href="index.php?section=lesOffres" role="button">Découvrir toutes les offres</a>
         </div>
 
   </div>    <!-- DIV CLASS ROUNDED-3...   -->
-
+</div>
 
   <footer class="col-12 bg-dark text-white mt-5">
 
