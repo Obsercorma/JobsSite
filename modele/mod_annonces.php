@@ -9,6 +9,7 @@ define("INCORRECT_IDACT", 3);
 define("INCORRECT_CONTRACT_TYPE", 4);
 define("INCORRECT_WORK_LOCATION",5);
 define("INCORRECT_DESCRIPTION",6);
+define("ERR_BDD_ADD_OFFER", 7);
 
 /**
  * Récupère les 3 dernières offres
@@ -76,8 +77,8 @@ function addOffer(
     $contractType,
     $debutPeriod,
     $finPeriod,
-    $idEmployeur,
-    $descContract
+    $descContract,
+    $idEmployeur
 ){
     $bdd = db_connect();
     if($bdd == null) throw new Exception("Erreur BDD!");
@@ -89,7 +90,7 @@ function addOffer(
     if(!preg_match("/[a-zA-Z0-9à-ü\s]+/", $descContract)) return INCORRECT_DESCRIPTION;
     $req = $bdd->prepare("INSERT INTO offre(intitoffre,idAct,lieuTravail,idContrat,debutPeriod,finPeriod,descOffre,idEmployeur)
     VALUES(:intitOffre,:idAct,:workLocation,:contractType,:debutPeriod,:finPeriod,:descOffre,:idEmployeur)");
-    return $req->execute([
+    if(!$req->execute([
         "intitOffre"=>$titleOffer,
         "idAct"=>$idActivity,
         "workLocation"=>$workLocation,
@@ -98,7 +99,8 @@ function addOffer(
         "finPeriod"=>$finPeriod,
         "descOffre"=>$descContract,
         "idEmployeur"=>$idEmployeur
-    ]);
+    ])) return ERR_BDD_ADD_OFFER;
+    return SUCCESS_ADDING_OFFER;
 }
 
 ?>
