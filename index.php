@@ -2,6 +2,7 @@
 
 if(session_status() === PHP_SESSION_NONE) session_start();
 $isConnected = isset($_SESSION["idUser"]);
+$cnxSession = $isConnected ? $_SESSION["idUser"] : 0;
 
 if (!isset($_GET['section']) OR $_GET['section'] == 'index')
 {
@@ -57,6 +58,10 @@ if (!isset($_GET['section']) OR $_GET['section'] == 'index')
 	elseif($_GET["section"] == "logout"){
 		require_once("controleur/logout.php");
 	}
+  elseif($_GET["section"] == "postuler"){
+    require_once("controleur/postuler.php");
+  }
+
 	else{
 		header('location: index.php');
 	}

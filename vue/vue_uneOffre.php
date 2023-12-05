@@ -10,6 +10,7 @@
         $description = $uneOffre['descOffre'];
         $datepublication = $uneOffre['datePublication'];
         $idcontrat = $uneOffre['idContrat'];
+        $idOffreCandid = $uneOffre['idOffre'];
 
 
 ?>
@@ -41,7 +42,7 @@
 
 
                 <p class="card-text"><?="Description du poste : ", $description ?></p>
-                <a href="#" class="btn btn-primary">Postuler</a>
+                <a href="index.php?section=postuler&idOffre=<?php echo $idOffreCandid ?>" class="btn btn-primary">Postuler</a>
             </div>
 
           </div>

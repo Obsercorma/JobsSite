@@ -24,16 +24,31 @@
             <div class="col-md-6">
               <h1 class="text-center text-white">Réponse à une offre</h1>
               <hr>
+
+              <?php
+                    foreach($ActiRecentes as $uneActi)
+                    {
+                      $idEtudiant = $uneActi['idEtudiant'];
+                      $intitOffre = $uneActi['intitoffre'];
+                      $idAct = $uneActi['idAct'];
+                      $lieuTravail = $uneActi['lieuTravail'];
+                      $prenom = $uneActi['prenom'];
+                      $nom = $uneActi['nom'];
+
+              ?>
+
               <div class="bg-primary bg-opacity-25 rounded-3 border border-2 border-primary">
-                <div class="rounded-3 col-md-12 row w-75 mx-auto p-3 align-self-center text-white">Caissier H/F E.Leclerc</div>
-                <div class="rounded-3 col-md-12 row w-75 mx-auto p-3 align-self-center text-white">Prénom / Nom</div>
+                <div class="rounded-3 col-md-12 row w-75 mx-auto p-3 align-self-center text-white"><?= $intitOffre ?></div>
+                <div class="rounded-3 col-md-12 row w-75 mx-auto p-3 align-self-center text-white"><?= $prenom, " ", $nom ?></div>
                   <div class="d-grid d-md-block text-center">
                       <a href="#" class="btn btn-success mb-3 mx-2">Accepter</a>
                       <a href="#" class="btn btn-outline-danger mb-3 mx-2">Refuser</a>
                       <a href="?section=unEtud" class="btn btn-primary mb-3 mx-2">Voir le profil</a>
                   </div>
               </div>
-
+            <?php
+                    } 
+            ?>
             </div>
 
       </div>
