@@ -13,7 +13,7 @@ define("OFFER_NOT_FOUND", 3);
  * @return int Retourne 0 si l'ajout est un succes.
  * Un autre code sera retourné dans le cas contraire.
  * @throws PDOException
- */
+ **/
 function applyAJob($idOffre, $idEtudiant){
     $bdd = db_connect();
     if($bdd == null) throw new PDOException("Erreur BDD!");
@@ -24,7 +24,7 @@ function applyAJob($idOffre, $idEtudiant){
     $reqVerifyOffer = $bdd->prepare("SELECT idOffre FROM offre WHERE idOffre = ?");
     if(!$reqVerifyOffer->execute([intval($idOffre)])) return ERROR_BDD_OFFER;
     if($reqVerifyOffer->rowCount()==0) return OFFER_NOT_FOUND;
-    
+
     $reqAdd = $bdd->prepare("INSERT INTO candidature(idEtudiant, idOffre) VALUES(?,?)");
     if(!$reqAdd->execute([intval($idEtudiant), intval($idOffre)])) return ERROR_BDD_OFFER;
     return OFFER_ADDED;
