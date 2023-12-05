@@ -41,8 +41,7 @@
 
 
                 <p class="card-text"><?="Description du poste : ", $description ?></p>
-                <a href="#" class="btn btn-primary">Envoyer un message</a>
-                <a href="#" class="btn btn-light">Voir son CV</a>
+                <a href="#" class="btn btn-primary">Postuler</a>
             </div>
 
           </div>
