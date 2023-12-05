@@ -67,6 +67,7 @@ function getOffers(){
  * @param string $finPeriod Fin perdiode offre (type:data)
  * @param ?int $idEmployeur Identifiant employeur
  * @param string $descContract Description du contrat
+ * @return bool $isEdit est une édition de l'offre
  * @throws Exception Génère une erreur en cas d'échec de connexion ou avec la requête SQL.
  * @return int Retourne l'état pour l'insertion.
  */
@@ -78,7 +79,8 @@ function addOffer(
     $debutPeriod,
     $finPeriod,
     $descContract,
-    $idEmployeur
+    $idEmployeur,
+    $isEdit
 ){
     $bdd = db_connect();
     if($bdd == null) throw new Exception("Erreur BDD!");
@@ -88,8 +90,20 @@ function addOffer(
     if(!preg_match("/[0-9]{1,}/", $contractType)) return INCORRECT_CONTRACT_TYPE;
     if(!preg_match("/[a-zA-Z0-9à-ü\s]+/", $workLocation)) return INCORRECT_WORK_LOCATION;
     if(!preg_match("/[a-zA-Z0-9à-ü\s]+/", $descContract)) return INCORRECT_DESCRIPTION;
-    $req = $bdd->prepare("INSERT INTO offre(intitoffre,idAct,lieuTravail,idContrat,debutPeriod,finPeriod,descOffre,idEmployeur)
-    VALUES(:intitOffre,:idAct,:workLocation,:contractType,:debutPeriod,:finPeriod,:descOffre,:idEmployeur)");
+    
+    if($isEdit){
+        $req = $bdd->prepare("INSERT INTO offre(intitoffre,idAct,lieuTravail,idContrat,debutPeriod,finPeriod,descOffre,idEmployeur)
+        VALUES(:intitOffre,:idAct,:workLocation,:contractType,:debutPeriod,:finPeriod,:descOffre,:idEmployeur)");
+    }else{
+        $req = $bdd->prepare("UPDATE offre SET intitoffre = :intitOffre,
+        idAct = :idAct,
+        lieuTravail = :workLocation,
+        idContrat =) :contractType,
+        debutPeriod = :debutPeriod,
+        finPeriod = :finPeriod,
+        descOffre = :descOffre,
+        WHERE idEmployeur = :idEmployeur");
+    }
     if(!$req->execute([
         "intitOffre"=>$titleOffer,
         "idAct"=>$idActivity,
@@ -101,6 +115,24 @@ function addOffer(
         "idEmployeur"=>$idEmployeur
     ])) return ERR_BDD_ADD_OFFER;
     return SUCCESS_ADDING_OFFER;
+}
+
+/**
+ * @param int $idOffre Identifiant offre
+ * @param int $idEmployeur Identifiant employeur
+ * @throws PDOException
+ * @return bool
+ */
+function delOffer($idOffre, $idEmployeur){
+    $bdd = db_connect();
+    if($bdd == null) throw new Exception("Erreur BDD!");
+
+    $reqDel = $bdd->prepare("DELETE FROM offre WHERE idOffre = :idOffre AND idEmployeur = :idEmployeur");
+    if(!$reqDel->execute([
+        "idOffre" => $idOffre, 
+        "idEmployeur"=>$idEmployeur
+    ])) return false;
+    return true;
 }
 
 ?>

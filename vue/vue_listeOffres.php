@@ -27,8 +27,12 @@
                                         <h5 class="student-name">Secteur : <?= $secteur ?></h5>
                                     </div>
                                     <div class="card-footer">
-                                       <p class="card-text"><?= $description ?></p>
-                                       <a href="index.php?section=uneOffre&idOffre=<?= $idOffre ?>" class="btn btn-primary fw-bold border-2">En savoir plus</a>
+                                      <p class="card-text"><?= $description ?></p>
+                                      <?php if($isConnected): ?>
+                                      <a href="index.php?section=uneOffre&idOffre=<?= $idOffre ?>" class="btn btn-primary fw-bold border-2">En savoir plus</a>
+                                      <?php else: ?>
+                                      <a href="index.php?section=login" class="btn btn-primary fw-bold border-2">Se connecter/S'inscrire</a>
+                                      <?php endif; ?>
                                     </div>
                                 </div>
                       <?php
