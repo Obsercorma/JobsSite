@@ -23,6 +23,7 @@ if(isset(
         $errMesgConnect = "L'identifiant ou le mot de passe est incorrect !";
     }
 }
+
 if(isset(
     $_POST["nom"],
     $_POST["prenom"],
@@ -34,23 +35,28 @@ if(isset(
     $_POST["passwd_check"]
 )){
     if($_POST["passwd"] == $_POST["passwd_check"]){
-        if(!is_integer($result=registerUser(
-            $_POST["nom"],
-            $_POST["prenom"],
-            $_POST["civ"],
-            $_POST["email"],
-            $_POST["tel"],
-            $_POST["statut"],
-            $_POST["passwd"]
-        ))){
-            if(session_status() === PHP_SESSION_NONE) session_start();
-            $_SESSION["idUser"] = $data["idUser"];
-            $_SESSION["prenom"] = $_POST["prenom"];
-            $_SESSION["nom"] = $_POST["nom"];
-            $_SESSION["email"] = $_POST["email"];
-            $_SESSION["statut"] = $_POST["idStatut"];
-            if($_POST["idStatut"] == 1) header("Location: ?section=dashboardEtud");
-            else header("Location: ?section=dashboardEmploi");
+        if(intval($_POST["civ"]) != 0){
+            if(!is_integer($result=registerUser(
+                $_POST["nom"],
+                $_POST["prenom"],
+                $_POST["civ"],
+                $_POST["email"],
+                $_POST["tel"],
+                $_POST["statut"],
+                $_POST["passwd"]
+            ))){
+                if(session_status() === PHP_SESSION_NONE) session_start();
+                $_SESSION["idUser"] = $result["idUser"];
+                $_SESSION["prenom"] = $_POST["prenom"];
+                $_SESSION["nom"] = $_POST["nom"];
+                $_SESSION["email"] = $_POST["email"];
+                $_SESSION["statut"] = intval($_POST["statut"]);
+                //echo var_dump([$_SESSION["statut"] == 1, $result["idUser"]]);
+                if(intval($_SESSION["statut"]) == 1) header("Location: ?section=dashboardEtud");
+                else header("Location: ?section=dashboardEmploi");
+            }
+        }else{
+            $errMesgRegister = "Veuillez renseigner correctement tout les champs.";
         }
     }else{
         $errMesgRegister = "Les mots de passe ne correspondent pas !";
