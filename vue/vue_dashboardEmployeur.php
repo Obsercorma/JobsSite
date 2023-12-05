@@ -1,10 +1,17 @@
 <?php
     include "vue/vue_entete.php";
 ?>
+
+<?php
+
+        $prenomEmployer = $dashboardEmploy['prenom'];
+        $nomEmployer = $dashboardEmploy['nom'];
+?>
+
 <body>
     <h1 class="title fw-bold">Tableau de bord employeur</h1>
     <h2 class="fw-bold mx-auto">
-    Prénom/Nom/Société
+      <em>Bonjour <?= $prenomEmployer, " ", $nomEmployer?></em>
     </h2>
     <section class="actions-grp">
         <div class="card border-0">

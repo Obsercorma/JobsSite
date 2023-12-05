@@ -32,17 +32,19 @@
 <div class="vr border-3 border border-dark rounded-4 p-0"></div>
 
         <div class="col-md-6">
-          <form action="#" method="post">
+          <form action="" method="post">
             <h1 class="text-center text-white">S'inscrire</h1>
             <?php if($errMesgRegister != null): ?>
               <p class="text-black alert alert-danger fw-bold"><?= $errMesgRegister ?></p>
             <?php endif; ?>
             <div class="form-floating mb-3">
-              <input type="text" class="form-control" name="nom" id="floatingInput" placeholder="">
+
+              <input type="text" class="form-control" name="nom" id="floatingInput" placeholder="name@example.com" required>
               <label for="floatingInput">Nom</label>
             </div>
             <div class="form-floating mb-3">
-              <input type="text" class="form-control" name="prenom" id="floatingPassword" placeholder="">
+              <input type="text" class="form-control" name="prenom" id="floatingPassword" placeholder="Password" required>
+
               <label for="floatingPassword">Prénom</label>
             </div>
 
