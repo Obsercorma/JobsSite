@@ -1,7 +1,7 @@
 <?php
 
 if(session_status() === PHP_SESSION_NONE) session_start();
-$isConnected = isset($_SESSION["statut"]);
+$isConnected = isset($_SESSION["idUser"]);
 
 if (!isset($_GET['section']) OR $_GET['section'] == 'index')
 {

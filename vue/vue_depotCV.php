@@ -3,10 +3,19 @@
 ?>
 <body>
     <h1 class="title text-white">Déposer CV</h1>
-    <div class="mb-3">
-    <input class="form-control" type="file" id="formFile" accept=".png, .jpg, .jpeg, .pdf">
-    </div>
-    <div id="pdfPreview"></div>
+    <form class="d-flex flex-column align-items-center justify-content-evenly" action="" method="post" enctype="multipart/form-data">
+        <?php if($statusMesg != null): ?>
+            <div class="mb-3">
+                <p class="alert <?= $statusClassname ?>"><?= $statusMesg ?></p>
+            </div>
+        <?php endif; ?>
+        <div class="mb-3">
+            <input class="form-control" name="cvfile" type="file" id="formFile" accept=".png, .jpg, .jpeg, .pdf">
+        </div>
+        <div id="pdfPreview"></div>
+        <button class="btn btn-primary align-center" type="submit">Mettre à jour</button>
+    </form>
+    <hr>
     <a href="index.php?section=lesOffres" class="btn btn-light mb-3" style="display: inline-block; width: auto;">Découvrir les offres</a>
 
     <script>

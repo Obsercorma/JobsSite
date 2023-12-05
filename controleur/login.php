@@ -43,13 +43,13 @@ if(isset(
             $_POST["statut"],
             $_POST["passwd"]
         ))){
-            
             if(session_status() === PHP_SESSION_NONE) session_start();
+            $_SESSION["idUser"] = $data["idUser"];
             $_SESSION["prenom"] = $_POST["prenom"];
             $_SESSION["nom"] = $_POST["nom"];
             $_SESSION["email"] = $_POST["email"];
-            $_SESSION["statut"] = $result["idStatut"];
-            if($result["idStatut"] == 1) header("Location: ?section=dashboardEtud");
+            $_SESSION["statut"] = $_POST["idStatut"];
+            if($_POST["idStatut"] == 1) header("Location: ?section=dashboardEtud");
             else header("Location: ?section=dashboardEmploi");
         }
     }else{
