@@ -7,10 +7,11 @@
     <title><?= $title_page ?? "Jobs" ?></title>
     <link rel="stylesheet" href="vue/css/style.css">
     <link rel="stylesheet" href="vue/css/bootstrap.min.css">
+    <link rel"icon" href"vue/images/J.ico" type"image/x-icon">
     <script href="vue/js/bootstrap.bundle.min.js" defer></script>
 </head>
 
-<body>
+<body class="px-0">
   <div class="row">
         <nav class="navbar">
           <div class="container-fluid">
