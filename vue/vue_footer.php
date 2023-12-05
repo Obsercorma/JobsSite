@@ -6,7 +6,7 @@
 
           <div class="col-md-6" id="scrollAPropos">
             <h4>Qui sommes-nous ?</h4>
-            <a class="p-1 rounded" href="#aPropos">A propos</a>
+            <a class="p-1 rounded" href="index.php#aPropos">A propos</a>
 
           </div>
 
