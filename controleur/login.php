@@ -49,7 +49,7 @@ if(isset(
             $_SESSION["nom"] = $_POST["nom"];
             $_SESSION["email"] = $_POST["email"];
             $_SESSION["statut"] = $_POST["idStatut"];
-            if($result["idStatut"] == 1) header("Location: ?section=dashboardEtud");
+            if($_POST["idStatut"] == 1) header("Location: ?section=dashboardEtud");
             else header("Location: ?section=dashboardEmploi");
         }
     }else{
