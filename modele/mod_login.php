@@ -42,7 +42,7 @@ function loginUser($useremail, $passwd){
  * @param int $statut (Est etudiant ou autre...)
  * @param string $passwd Mot de passe
  * @throws PDOException
- * @return array|int Retourne un des codes definies au debut de ce fichier. ligne:5
+ * @return array|int Retourne un des codes definies au debut de ce fichier ou l'identifiant utilisateur en cas de succes. ligne:5
  */
 function registerUser(
     $nom,
