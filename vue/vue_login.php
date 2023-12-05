@@ -13,11 +13,11 @@
          <div class="col">
           <form action="" method="post">
             <div class="form-floating mb-3">
-              <input type="email" class="form-control form-control-sm" name="userlogin" id="floatingInput" placeholder="name@example.com" required>
+              <input type="email" class="form-control form-control-sm" name="userlogin" id="floatingInput" placeholder="name@example.com" pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" title="test d'information sur le motif à respecter" required>
               <label for="floatingInput">Adresse mail</label>
             </div>
             <div class="form-floating mb-3">
-              <input type="password" class="form-control form-control-sm" name="passwdlogin" id="floatingPassword" placeholder="Password" required>
+              <input type="password" class="form-control form-control-sm" name="passwdlogin" id="floatingPassword" placeholder="Password" pattern=".{8,}" title="test d'information sur le motif à respecter" required>
               <label for="floatingPassword">Mot de passe</label>
             </div>
             <div class="text-center">
@@ -38,20 +38,22 @@
               <p class="text-black alert alert-danger fw-bold"><?= $errMesgRegister ?></p>
             <?php endif; ?>
             <div class="form-floating mb-3">
+
               <input type="text" class="form-control" name="nom" id="floatingInput" placeholder="name@example.com" required>
               <label for="floatingInput">Nom</label>
             </div>
             <div class="form-floating mb-3">
               <input type="text" class="form-control" name="prenom" id="floatingPassword" placeholder="Password" required>
+
               <label for="floatingPassword">Prénom</label>
             </div>
 
             <div class="form-floating mb-3">
-              <input type="email" class="form-control" name="email" id="floatingInput" placeholder="name@example.com" required>
+              <input type="email" class="form-control" name="email" id="floatingInput" placeholder="name@example.com" pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" title="test d'information sur le motif à respecter" required>
               <label for="floatingInput">Adresse mail</label>
             </div>
             <div class="form-floating mb-3">
-              <input type="tel" class="form-control" name="tel" id="floatingPassword" placeholder="0612345678" required>
+              <input type="tel" class="form-control" name="tel" id="floatingPassword" placeholder="0123456789" pattern="[0]{1}[0-9]{9}" title="test d'information sur le motif à respecter" required>
               <label for="floatingPassword">Numéro de tél</label>
             </div>
             <div class="mb-3">
@@ -77,7 +79,7 @@
               </div> -->
 
               <div class="form-floating mb-3">
-                <input type="password" class="form-control" name="passwd" id="floatingPassword" required>
+                <input type="password" class="form-control" name="passwd" id="floatingPassword" pattern=".{8,}" title="test d'information sur le motif à respecter" required>
                 <label for="floatingPassword">Mot de passe</label>
               </div>
               <div class="form-floating mb-3">
