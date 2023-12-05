@@ -1,7 +1,6 @@
 <?php
 
-require_once("modele/mod_etudiants.php");
+require_once("modele/mod_offre.php");
 
-echo "<pre>".print_r(getRequestedOffersFromStudent(1),true)."</pre>";
-
+var_dump(applyAJob(12,26));
 ?>
