@@ -30,7 +30,7 @@ function depotCV($fileName, $tmpFilename, $fileSize, $idUser){
     if(in_array(
         $extFile,
         $allowedFormats
-    ) or $fileSize <= $allowedFileSize){
+    ) and $fileSize <= $allowedFileSize){
         $randomFileName = "storage/" . genRandomName() . ".{$extFile}";
         if(move_uploaded_file($tmpFilename, $randomFileName)){
             $req = $bdd->prepare("UPDATE utilisateur SET cvUser = ? WHERE idUser = ?");
@@ -40,6 +40,6 @@ function depotCV($fileName, $tmpFilename, $fileSize, $idUser){
             return "L'ajout de votre CV n'a pas pu s'effectuer !";
         }
     }else{
-        return "Veuillez verifier le format du fichier et qu'il soit inferieur ou égale à 2Mo.";
+        return "Veuillez verifier que votre fichier soit bien au format et qu'il soit inferieur ou égale à 2Mo.";
     }
 }

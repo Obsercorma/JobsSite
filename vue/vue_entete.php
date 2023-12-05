@@ -38,6 +38,9 @@
             <div class="col-4 align-self-end">
               <div class="">
                 <a href="index.php?section=<?= $isConnected ? "logout" : "login" ?>" class="btn btn-primary"><?= $isConnected ? "Se déconecter" : "Se Connecter/S'inscrire" ?></a>
+                <?php if($isConnected): ?>
+                <a href="?section=<?= $_SESSION["status"]>1 ? "dashboardEmploi" : "dashboardEtud" ?>" class="btn btn-primary">Mon tableau de bord</a>
+                <?php endif; ?>
               </div>
             </div>
 
