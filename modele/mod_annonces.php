@@ -18,7 +18,7 @@ define("INCORRECT_DESCRIPTION",6);
 function getTopOffers(){
     $bdd = db_connect();
     if($bdd == null) throw new Exception("Erreur BDD!");
-    $req = $bdd->prepare("SELECT * FROM offre ORDER BY datePublication DESC LIMIT ".TOP_OFFERS_LIMIT);
+    $req = $bdd->prepare("SELECT * FROM offre ORDER BY datePublication DESC LIMIT 3;");
     if(!$req->execute()) throw new Exception("Erreur Requête!");
     return $req->fetchAll(PDO::FETCH_ASSOC);
 }

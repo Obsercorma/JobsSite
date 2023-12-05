@@ -62,17 +62,17 @@
               <label>Type de contrat</label>
 <br>
               <div class="form-check form-check-inline">
-                <input class="form-check-input margin-" type="radio" name="typecontrat" value="option1">
+                <input class="form-check-input- margin-" type="radio" name="typecontrat" value="option1">
                 <label class="form-check-label" for="inlineCheckbox1">CDI</label>
               </div>
 
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="typecontrat" value="option2">
+                <input class="form-check-input-" type="radio" name="typecontrat" value="option2">
                 <label class="form-check-label" for="inlineCheckbox2">CDD</label>
               </div>
 
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="typecontrat" value="option3">
+                <input class="form-check-input-" type="radio" name="typecontrat" value="option3">
                 <label class="form-check-label" for="inlineCheckbox2">CP*</label>
               </div>
 
