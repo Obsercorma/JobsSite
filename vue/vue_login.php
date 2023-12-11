@@ -17,7 +17,7 @@
               <label for="floatingInput">Adresse mail</label>
             </div>
             <div class="form-floating mb-3">
-              <input type="password" class="form-control form-control-sm" name="passwdlogin" id="floatingPassword" placeholder="Password" pattern=".{8,}" title="test d'information sur le motif à respecter" required>
+              <input type="password" class="form-control form-control-sm" name="passwdlogin" id="floatingPassword" placeholder="Password" required>
               <label for="floatingPassword">Mot de passe</label>
             </div>
             <div class="text-center">
