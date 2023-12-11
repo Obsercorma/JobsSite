@@ -12,7 +12,7 @@
 
           <div class="col-md-6">
             <h4>Confidentialité</h4>
-            <a class="p-1 rounded" href="vue/confidentialite.txt">A propos</a>
+            <a class="p-1 rounded" href="vue/confidentialite.html">A propos</a>
           </div>
 
         </div>
