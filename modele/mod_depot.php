@@ -13,6 +13,21 @@ function genRandomName($length=10){
 }
 
 /**
+ * @param int $idStudent Identifiant étudiant
+ * @throws PDOException
+ * @return string|false Retourne le chemin d'accès au CV de l'étudiant. Renvoi faux si l'étudiant est introuvable.
+ */
+function hasCVAlready($idStudent){
+    $bdd = db_connect();
+    if($bdd == null) return "Une erreur interne empêche le téléversement de votre CV !";
+    
+    $req = $bdd->prepare("SELECT cvUser FROM utilisateur WHERE idUser = ? AND idStatut = 1");
+    if(!$req->execute([$idStudent])) return false;
+    if($req->rowCount()==0) return false;
+    return $req->fetch(PDO::FETCH_ASSOC)["cvUser"];
+}
+
+/**
  * @param string $filename
  * @param string $tmpFilename
  * @param int $fileSize
@@ -33,6 +48,8 @@ function depotCV($fileName, $tmpFilename, $fileSize, $idUser){
     ) and $fileSize <= $allowedFileSize){
         $randomFileName = "storage/" . genRandomName() . ".{$extFile}";
         if(move_uploaded_file($tmpFilename, $randomFileName)){
+            $hasCV = hasCVAlready($idUser);
+            if($hasCV) unlink(dirname(__DIR__).DIRECTORY_SEPARATOR.$hasCV);
             $req = $bdd->prepare("UPDATE utilisateur SET cvUser = ? WHERE idUser = ?");
             if(!$req->execute([$randomFileName, $idUser])) return "Une erreur interne empêche le téléversement de votre CV !";
             return "Votre CV a bien été déposé";

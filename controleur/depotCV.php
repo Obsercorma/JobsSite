@@ -19,6 +19,8 @@ if(isset(
         $statusMesg = "Une erreur est survenue lors du téléversement de votre CV !";
     }
 }
-
+$cvStudent = hasCVAlready($cnxSession);
+$pathCVStudent = $cvStudent ? "/{$cvStudent}" : null;
+    
 include_once('vue/vue_depotCV.php');
 

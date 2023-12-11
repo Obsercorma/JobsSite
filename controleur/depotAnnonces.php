@@ -9,6 +9,7 @@ $activites = getAllActivities();
 $typeContrats = getAllTypeContracts();
 
 
+
 if(isset(
     $_POST["titre"],
     $_POST["activite"],
