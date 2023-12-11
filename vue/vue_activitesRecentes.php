@@ -4,7 +4,7 @@
       <h1 class="titreprincipal"><b>Activités récentes</b></h1>
 
       <div class="rounded-3 col-md-8 row flex-nowrap bg-black bg-opacity-50 w-75 mx-auto p-3 align-self-center menu-pleine-hauteur">
-
+            <?php if(!$isStudent): ?>
             <div class="col-md-6">
                 <h1 class="text-center text-white">Candidature spontanée</h1>
                 <hr>
@@ -19,8 +19,8 @@
                 </div>
             </div>
 
-<div class="vr border-3 border border-dark rounded-4 p-0"></div> <!-- Barre entre les deux parties -->
-
+            <div class="vr border-3 border border-dark rounded-4 p-0"></div> <!-- Barre entre les deux parties -->
+            <?php endif; ?>
             <div class="col-md-6">
               <h1 class="text-center text-white"><?= $isStudent ? "Mes candidatures" : "Réponse à une offre" ?></h1>
               <hr>
