@@ -35,7 +35,7 @@ if(isset(
     $_POST["passwd_check"]
 )){
     if($_POST["passwd"] == $_POST["passwd_check"]){
-        if(intval($_POST["civ"]) != 0){
+        if(intval($_POST["civ"]) != 0 and intval($_POST["statut"]) != 0){
             if(!is_integer($result=registerUser(
                 $_POST["nom"],
                 $_POST["prenom"],
@@ -50,9 +50,8 @@ if(isset(
                 $_SESSION["prenom"] = $_POST["prenom"];
                 $_SESSION["nom"] = $_POST["nom"];
                 $_SESSION["email"] = $_POST["email"];
-                $_SESSION["statut"] = intval($_POST["statut"]);
-                //echo var_dump([$_SESSION["statut"] == 1, $result["idUser"]]);
-                if(intval($_SESSION["statut"]) == 1) header("Location: ?section=dashboardEtud");
+                $_SESSION["status"] = intval($_POST["statut"]);
+                if($_SESSION["status"] == 1) header("Location: ?section=dashboardEtud");
                 else header("Location: ?section=dashboardEmploi");
             }
         }else{

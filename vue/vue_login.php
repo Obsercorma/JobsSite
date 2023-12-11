@@ -66,7 +66,7 @@
             </div>
             <div class="mb-3">
               <select class="form-select" name="statut">
-                <option value="" selected>-- Sélectionner votre statut--</option>
+                <option value="0" selected>-- Sélectionner votre statut--</option>
                 <?php foreach($statusChoices as $status): ?>
                   <option value="<?= $status["idStatut"] ?>"><?= $status["intitStatut"] ?></option>
                 <?php endforeach; ?>
