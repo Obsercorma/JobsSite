@@ -92,9 +92,6 @@ function addOffer(
     if(!preg_match("/[a-zA-Z0-9à-ü\s]+/", $descContract)) return INCORRECT_DESCRIPTION;
     
     if($isEdit){
-        $req = $bdd->prepare("INSERT INTO offre(intitoffre,idAct,lieuTravail,idContrat,debutPeriod,finPeriod,descOffre,idEmployeur)
-        VALUES(:intitOffre,:idAct,:workLocation,:contractType,:debutPeriod,:finPeriod,:descOffre,:idEmployeur)");
-    }else{
         $req = $bdd->prepare("UPDATE offre SET intitoffre = :intitOffre,
         idAct = :idAct,
         lieuTravail = :workLocation,
@@ -103,6 +100,9 @@ function addOffer(
         finPeriod = :finPeriod,
         descOffre = :descOffre,
         WHERE idEmployeur = :idEmployeur");
+    }else{
+        $req = $bdd->prepare("INSERT INTO offre(intitoffre,idAct,lieuTravail,idContrat,debutPeriod,finPeriod,descOffre,idEmployeur) 
+        VALUES(:intitOffre,:idAct,:workLocation,:contractType,:debutPeriod,:finPeriod,:descOffre,:idEmployeur)");
     }
     if(!$req->execute([
         "intitOffre"=>$titleOffer,

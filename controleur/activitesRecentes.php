@@ -1,12 +1,13 @@
 <?php
 
-  $idUser = $_SESSION["idUser"];
+$idUser = $_SESSION["idUser"];
 
-    // modele
-    include_once('modele/mod_dashboard.php');
+// modele
+require_once('modele/mod_dashboard.php');
+$ActiRecentes = [];
 
-    if ($_SESSION["status"]==1) {
-      $ActiRecentes= getApplicationsFromStudent($idUser);
-    }
-    // affichage de  la    vue associée
-    include_once('vue/vue_activitesRecentes.php');
+if ($_SESSION["status"]==1) {
+  $ActiRecentes= getApplicationsFromStudent($idUser);
+}
+// affichage de  la    vue associée
+require_once('vue/vue_activitesRecentes.php');

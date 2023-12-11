@@ -26,7 +26,8 @@ if(isset(
         $_POST["debutPeriode"],
         $_POST["finPeriode"],
         $_POST["description"],
-        $_SESSION["idUser"]
+        $_SESSION["idUser"],
+        false
     ))==0){
         header("Location: ?section=mesOffres");
     }else{
