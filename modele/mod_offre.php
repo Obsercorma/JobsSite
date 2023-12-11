@@ -5,6 +5,7 @@ define("OFFER_ADDED", 0);
 define("STUDENT_NOT_FOUND", 1);
 define("ERROR_BDD_OFFER", 2);
 define("OFFER_NOT_FOUND", 3);
+define("USER_ALREADY_APPLIED", 4);
 
 /**
  * Permet à un étudiant de postuler à une offre.
@@ -25,8 +26,12 @@ function applyAJob($idOffre, $idEtudiant){
     if(!$reqVerifyOffer->execute([intval($idOffre)])) return ERROR_BDD_OFFER;
     if($reqVerifyOffer->rowCount()==0) return OFFER_NOT_FOUND;
 
-    $reqAdd = $bdd->prepare("INSERT INTO candidature(idEtudiant, idOffre) VALUES(?,?)");
-    if(!$reqAdd->execute([intval($idEtudiant), intval($idOffre)])) return ERROR_BDD_OFFER;
+    try{
+        $reqAdd = $bdd->prepare("INSERT INTO candidature(idEtudiant, idOffre) VALUES(?,?)");
+        if(!$reqAdd->execute([intval($idEtudiant), intval($idOffre)])) return ERROR_BDD_OFFER;
+    }catch(PDOException $e){
+        return USER_ALREADY_APPLIED;
+    }
     return OFFER_ADDED;
 }
 

@@ -11,7 +11,7 @@
     <script src="vue/js/bootstrap.bundle.min.js" defer></script>
 </head>
 
-<body class="px-0">
+<body class="p-0">
     <div class="row">
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
