@@ -57,3 +57,9 @@ body{
 .logoEntete{
   width: 35%;
 }
+.w-60{
+    width: 60% !important;
+}
+.h-60{
+    height: 60% !important;
+}
