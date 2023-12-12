@@ -76,7 +76,10 @@ CREATE TABLE `candidature` (
 --
 
 INSERT INTO `candidature` (`idEtudiant`, `idOffre`, `idStatut`) VALUES
-(17, 1, 1),
+(1, 2, 1),
+(7, 2, 1),
+(12, 12, 1),
+(12, 14, 1),
 (17, 14, 1);
 
 -- --------------------------------------------------------
@@ -127,10 +130,10 @@ INSERT INTO `offre` (`idOffre`, `intitoffre`, `idAct`, `lieuTravail`, `idContrat
 (1, 'Caissier H/F E.Leclerc', 2, 'Auchan', 1, '2023-11-11', '2023-11-11', 'À l\'aide.', 2, 0, '2023-11-14'),
 (2, 'Livreur GLS', 4, 'France', 2, '2023-12-11', '2024-01-19', 'Permis B Requis.', 3, 0, '2023-11-21'),
 (3, 'Garde Enfant', 3, '42 Rue de l\'Infini', 3, '2023-11-10', NULL, 'Tout les Week-end 18h-22h', 2, 0, '2023-11-12'),
-(4, 'Livreur de stupéfiants', 2, 'France', 1, '2023-11-17', NULL, 'Rdv 20h45 Place de l\'Étoile', 3, 0, '2023-11-17'),
+(4, 'Livreur', 2, 'France', 1, '2023-11-17', NULL, 'Rdv 20h45 Place de l\'Étoile', 3, 0, '2023-11-17'),
 (12, 'Offre test', 1, 'Lieu de test', 1, '2023-11-23', '2023-11-25', 'Description de test', 2, 0, '2023-11-28'),
-(13, 'Annonce de test 2', 2, 'la ferme en folie', 2, '2023-12-11', '2024-02-11', 'Test', 6, 0, '2023-12-11'),
-(14, 'Annonce de test 3', 4, 'Banque de Moskova', 2, '2023-12-25', '2024-05-06', 'Salutations camarade !', 6, 0, '2023-12-11');
+(13, 'Intérim bâtiment', 6, 'Zone Nord Le Mans', 1, '2023-11-30', '2023-12-05', 'Installation d\'IPN dans le futur centre commercial Auchan.', 1, 1, '2023-11-28'),
+(14, 'Assistant agricole', 2, 'Dans mon champ', 1, '2023-12-19', '2023-12-29', 'Ramassage de pomme de terre', 13, 0, '2023-12-11');
 
 -- --------------------------------------------------------
 
@@ -204,10 +207,10 @@ CREATE TABLE `utilisateur` (
   `nom` varchar(30) NOT NULL,
   `prenom` varchar(30) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `passwd` text NOT NULL,
-  `tel` varchar(20) NOT NULL,
-  `imgUser` text NOT NULL DEFAULT 'defaultUser.png',
-  `cvUser` text DEFAULT NULL,
+  `passwd` varchar(60) NOT NULL,
+  `tel` varchar(10) NOT NULL,
+  `imgUser` varchar(30) NOT NULL DEFAULT 'defaultUser.png',
+  `cvUser` varchar(30) DEFAULT NULL,
   `idStatut` tinyint(4) NOT NULL,
   `bio` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -217,16 +220,17 @@ CREATE TABLE `utilisateur` (
 --
 
 INSERT INTO `utilisateur` (`idUser`, `civilite`, `nom`, `prenom`, `email`, `passwd`, `tel`, `imgUser`, `cvUser`, `idStatut`, `bio`) VALUES
-(1, 1, 'Baroch', 'Mael', 'test@mail.com', '1234', '0123456789', 'defaultUser.png', NULL, 1, NULL),
+(1, 1, 'Baroche', 'Mael', 'test@mail.com', '1234', '0123456789', 'defaultUser.png', NULL, 1, NULL),
 (2, 1, 'Baroche', 'Nael', 'test@exemple.com', '6789', '0102030405', 'defaultUser.png', NULL, 2, NULL),
-(3, 2, 'Onyme', 'Anne', 'aa', 'a', '0987654321', 'defaultUser.png', NULL, 3, NULL),
+(3, 2, 'Onyme', 'Anne', 'exemple@mail.com', '$2y$10$PQweDMWsF.jfGQg.QWO2V.RqjBgN04BAwkRZaGeSMXfy9knSo50oS', '0987654321', 'defaultUser.png', NULL, 3, NULL),
 (4, 3, 'Maroche', 'Baël', 'exemple@mail.org', '9516', '0624931567', '\'user.png\'', NULL, 3, NULL),
-(6, 1, 'L\'Observateur', 'TechRusse', 'techrusse@mythologicarte.fr', '$2y$10$vcPKPBVUM/EaBpBun4CGx.s/R6ED4YxtsJetGyb3/jt0rBXiBu08C', '0123456788', 'defaultUser.png', NULL, 3, NULL),
-(8, 1, 'Marc', 'Francis', 'marc@gmail.com', '$2y$10$nyNy.OgipbazEIXK7MpTiu32nVJlKxxHjd.hypGLU/cQ1IUaN5eZi', '0612345678', 'defaultUser.png', NULL, 1, NULL),
-(9, 2, 'Marci', 'Francisa', 'mardi@gmail.com', '$2y$10$DEA2R.muuKN7CTxFwV5kj.nfAdiKXY3DvoyL0jP2YY/TRH5RUi2KW', '0458652384', 'defaultUser.png', NULL, 3, NULL),
-(10, 1, 'aa', 'aa', 'anthony@gmail.com', '$2y$10$8WCRdigfiTKmoDkcxPavIelSZV3NvZC98sqAUH9XBKbi/0t.Ou5Bi', '11111', 'defaultUser.png', NULL, 2, NULL),
-(11, 2, 'FLAFLA', 'Thomito', 'thotho@gmail.com', '$2y$10$KtaDOvsv9G/asqI5gf2VPOYAmgsrEX2sUlQvcNfWU8hCrgLYGo0hS', '77777', 'defaultUser.png', NULL, 1, NULL),
-(17, 1, 'JS', 'Jest', 'jestjs@example.org', '$2y$10$ERCYUj7gkKnpXahPMjN/Vub7aIOXiL47fPQbiNh4eBpPx9VT78rsK', '0624897531', 'defaultUser.png', 'storage/ead28feaf5.pdf', 1, NULL);
+(6, 1, 'L\'Observateur', 'TechRusse', 'techrusse@mythologicarte.fr', '$2y$10$e/puVD63PiKLI0ZpgMtkJeU0IVxoXBZzEzWdtXjGMLwhPyM5Y/AYe', '0123456788', 'defaultUser.png', NULL, 3, NULL),
+(7, 3, 'test', 'testEtud', 'maelbartoche@gmail.com', '$2y$10$PQweDMWsF.jfGQg.QWO2V.RqjBgN04BAwkRZaGeSMXfy9knSo50oS', '54', 'defaultUser.png', NULL, 1, NULL)
+(9, 1, 'Marchand', 'Frédéric', 'fredolemarchand@gmail.com', 'dhbfhdebf', '49872974298', 'defaultUser.png', NULL, 1, 'Etudiant en commerce'),
+(10, 2, 'Dubuisson', 'Angélique', 'angeliquedanslebuisson@arbre.bio', 'effef', '8933692974', 'defaultUser.png', NULL, 1, 'Etudiante en biologie'),
+(11, 1, 'Laroche', 'Pierre', 'pierresuruneroche@gmail.com', 'dcdevefqv', '64568785645', 'defaultUser.png', NULL, 1, 'Je cherche un étudiant en alternance'),
+(12, 1, 'Rouet', 'Gabin', 'rouetgabin@gmail.com', '$2y$10$EIcDI2S/UcPi4Y.4DpCf9OzvKswpQulMcv/tjU4vuZ86GpvANdQcq', '0635243566', 'defaultUser.png', NULL, 1, NULL),
+(13, 1, 'Nalathe', 'Arthur', 'contact@arthur.fr', '$2y$10$1hjvN0fGJXcz6guOtchY2eZloJS1xd5VJv8Rwt.CKj8pY/d/paBKy', '0946253478', 'defaultUser.png', NULL, 3, NULL);
 
 --
 -- Index pour les tables déchargées
@@ -335,7 +339,7 @@ ALTER TABLE `typecontrat`
 -- AUTO_INCREMENT pour la table `utilisateur`
 --
 ALTER TABLE `utilisateur`
-  MODIFY `idUser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `idUser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Contraintes pour les tables déchargées
