@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : mar. 28 nov. 2023 à 17:42
--- Version du serveur : 10.4.28-MariaDB
--- Version de PHP : 8.2.4
+-- Généré le : lun. 11 déc. 2023 à 11:14
+-- Version du serveur : 10.4.22-MariaDB
+-- Version de PHP : 7.4.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Base de données : `bddjobs`
 --
+CREATE DATABASE IF NOT EXISTS `bddjobs` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `bddjobs`;
 
 -- --------------------------------------------------------
 
@@ -30,7 +32,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `activite` (
   `idAct` int(11) NOT NULL,
   `intitAct` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `activite`
@@ -67,14 +69,18 @@ CREATE TABLE `candidature` (
   `idEtudiant` int(11) NOT NULL,
   `idOffre` int(11) NOT NULL,
   `idStatut` tinyint(4) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `candidature`
 --
 
 INSERT INTO `candidature` (`idEtudiant`, `idOffre`, `idStatut`) VALUES
-(1, 2, 1);
+(1, 2, 1),
+(7, 2, 1),
+(12, 12, 1),
+(12, 14, 1),
+(17, 14, 1);
 
 -- --------------------------------------------------------
 
@@ -85,7 +91,7 @@ INSERT INTO `candidature` (`idEtudiant`, `idOffre`, `idStatut`) VALUES
 CREATE TABLE `civilites` (
   `idCivil` tinyint(4) NOT NULL,
   `intitCivil` varchar(15) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `civilites`
@@ -114,7 +120,7 @@ CREATE TABLE `offre` (
   `idEmployeur` int(11) NOT NULL,
   `idValidation` tinyint(1) NOT NULL DEFAULT 0,
   `datePublication` date NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `offre`
@@ -124,9 +130,10 @@ INSERT INTO `offre` (`idOffre`, `intitoffre`, `idAct`, `lieuTravail`, `idContrat
 (1, 'Caissier H/F E.Leclerc', 2, 'Auchan', 1, '2023-11-11', '2023-11-11', 'À l\'aide.', 2, 0, '2023-11-14'),
 (2, 'Livreur GLS', 4, 'France', 2, '2023-12-11', '2024-01-19', 'Permis B Requis.', 3, 0, '2023-11-21'),
 (3, 'Garde Enfant', 3, '42 Rue de l\'Infini', 3, '2023-11-10', NULL, 'Tout les Week-end 18h-22h', 2, 0, '2023-11-12'),
-(4, 'Livreur de stupéfiants', 2, 'France', 1, '2023-11-17', NULL, 'Rdv 20h45 Place de l\'Étoile', 3, 0, '2023-11-17'),
+(4, 'Livreur', 2, 'France', 1, '2023-11-17', NULL, 'Rdv 20h45 Place de l\'Étoile', 3, 0, '2023-11-17'),
 (12, 'Offre test', 1, 'Lieu de test', 1, '2023-11-23', '2023-11-25', 'Description de test', 2, 0, '2023-11-28'),
-(13, 'Intérim bâtiment', 6, 'Zone Nord Le Mans', 1, '2023-11-30', '2023-12-05', 'Installation d\'IPN dans le futur centre commercial Auchan.', 1, 1, '2023-11-28');
+(13, 'Intérim bâtiment', 6, 'Zone Nord Le Mans', 1, '2023-11-30', '2023-12-05', 'Installation d\'IPN dans le futur centre commercial Auchan.', 1, 1, '2023-11-28'),
+(14, 'Assistant agricole', 2, 'Dans mon champ', 1, '2023-12-19', '2023-12-29', 'Ramassage de pomme de terre', 13, 0, '2023-12-11');
 
 -- --------------------------------------------------------
 
@@ -137,7 +144,7 @@ INSERT INTO `offre` (`idOffre`, `intitoffre`, `idAct`, `lieuTravail`, `idContrat
 CREATE TABLE `statut` (
   `idStatut` tinyint(4) NOT NULL,
   `intitStatut` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `statut`
@@ -157,7 +164,7 @@ INSERT INTO `statut` (`idStatut`, `intitStatut`) VALUES
 CREATE TABLE `statutcandid` (
   `idStatut` tinyint(4) NOT NULL,
   `intitStatut` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `statutcandid`
@@ -176,7 +183,7 @@ INSERT INTO `statutcandid` (`idStatut`, `intitStatut`) VALUES
 CREATE TABLE `typecontrat` (
   `idContrat` int(11) NOT NULL,
   `intitContrat` varchar(15) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `typecontrat`
@@ -199,13 +206,13 @@ CREATE TABLE `utilisateur` (
   `nom` varchar(30) NOT NULL,
   `prenom` varchar(30) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `passwd` text NOT NULL,
-  `tel` varchar(20) NOT NULL,
-  `imgUser` text NOT NULL DEFAULT 'defaultUser.png',
-  `cvUser` text DEFAULT NULL,
+  `passwd` varchar(60) NOT NULL,
+  `tel` varchar(10) NOT NULL,
+  `imgUser` varchar(30) NOT NULL DEFAULT 'defaultUser.png',
+  `cvUser` varchar(30) DEFAULT NULL,
   `idStatut` tinyint(4) NOT NULL,
   `bio` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `utilisateur`
@@ -214,12 +221,15 @@ CREATE TABLE `utilisateur` (
 INSERT INTO `utilisateur` (`idUser`, `civilite`, `nom`, `prenom`, `email`, `passwd`, `tel`, `imgUser`, `cvUser`, `idStatut`, `bio`) VALUES
 (1, 1, 'Baroche', 'Mael', 'test@mail.com', '1234', '0123456789', 'defaultUser.png', NULL, 1, NULL),
 (2, 1, 'Baroche', 'Nael', 'test@exemple.com', '6789', '0102030405', 'defaultUser.png', NULL, 2, NULL),
-(3, 2, 'Onyme', 'Anne', 'aa', 'a', '0987654321', 'defaultUser.png', NULL, 3, NULL),
+(3, 2, 'Onyme', 'Anne', 'exemple@mail.com', '$2y$10$PQweDMWsF.jfGQg.QWO2V.RqjBgN04BAwkRZaGeSMXfy9knSo50oS', '0987654321', 'defaultUser.png', NULL, 3, NULL),
 (4, 3, 'Maroche', 'Baël', 'exemple@mail.org', '9516', '0624931567', '\'user.png\'', NULL, 3, NULL),
 (6, 1, 'L\'Observateur', 'TechRusse', 'techrusse@mythologicarte.fr', '$2y$10$e/puVD63PiKLI0ZpgMtkJeU0IVxoXBZzEzWdtXjGMLwhPyM5Y/AYe', '0123456788', 'defaultUser.png', NULL, 3, NULL),
+(7, 3, 'test', 'testEtud', 'maelbartoche@gmail.com', '$2y$10$PQweDMWsF.jfGQg.QWO2V.RqjBgN04BAwkRZaGeSMXfy9knSo50oS', '54', 'defaultUser.png', NULL, 1, NULL)
 (9, 1, 'Marchand', 'Frédéric', 'fredolemarchand@gmail.com', 'dhbfhdebf', '49872974298', 'defaultUser.png', NULL, 1, 'Etudiant en commerce'),
 (10, 2, 'Dubuisson', 'Angélique', 'angeliquedanslebuisson@arbre.bio', 'effef', '8933692974', 'defaultUser.png', NULL, 1, 'Etudiante en biologie'),
-(11, 1, 'Laroche', 'Pierre', 'pierresuruneroche@gmail.com', 'dcdevefqv', '64568785645', 'defaultUser.png', NULL, 1, 'Je cherche un étudiant en alternance');
+(11, 1, 'Laroche', 'Pierre', 'pierresuruneroche@gmail.com', 'dcdevefqv', '64568785645', 'defaultUser.png', NULL, 1, 'Je cherche un étudiant en alternance'),
+(12, 1, 'Rouet', 'Gabin', 'rouetgabin@gmail.com', '$2y$10$EIcDI2S/UcPi4Y.4DpCf9OzvKswpQulMcv/tjU4vuZ86GpvANdQcq', '0635243566', 'defaultUser.png', NULL, 1, NULL),
+(13, 1, 'Nalathe', 'Arthur', 'contact@arthur.fr', '$2y$10$1hjvN0fGJXcz6guOtchY2eZloJS1xd5VJv8Rwt.CKj8pY/d/paBKy', '0946253478', 'defaultUser.png', NULL, 3, NULL);
 
 --
 -- Index pour les tables déchargées
@@ -304,7 +314,7 @@ ALTER TABLE `civilites`
 -- AUTO_INCREMENT pour la table `offre`
 --
 ALTER TABLE `offre`
-  MODIFY `idOffre` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `idOffre` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT pour la table `statut`
@@ -328,7 +338,7 @@ ALTER TABLE `typecontrat`
 -- AUTO_INCREMENT pour la table `utilisateur`
 --
 ALTER TABLE `utilisateur`
-  MODIFY `idUser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `idUser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Contraintes pour les tables déchargées

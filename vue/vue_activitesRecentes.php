@@ -22,7 +22,7 @@
 <div class="vr border-3 border border-dark rounded-4 p-0"></div> <!-- Barre entre les deux parties -->
 
             <div class="col-md-6">
-              <h1 class="text-center text-white">Réponse à une offre</h1>
+              <h1 class="text-center text-white"><?= $isStudent ? "Mes candidatures" : "Réponse à une offre" ?></h1>
               <hr>
 
               <?php
@@ -37,9 +37,9 @@
 
               ?>
 
-              <div class="bg-primary bg-opacity-25 rounded-3 border border-2 border-primary">
-                <div class="rounded-3 col-md-12 row w-75 mx-auto p-3 align-self-center text-white"><?= $intitOffre ?></div>
-                <div class="rounded-3 col-md-12 row w-75 mx-auto p-3 align-self-center text-white"><?= $prenom, " ", $nom ?></div>
+              <div class="bg-primary bg-opacity-25 rounded-3 border border-2 border-primary my-2">
+                <h3 class="rounded-3 col-md-12 row w-75 mx-auto p-3 align-self-center text-white">Job: <?= $intitOffre ?></h3>
+                <p class="rounded-3 col-md-12 row w-75 mx-auto p-3 align-self-center text-white fw-bold">Employeur: <?= $prenom, " ", $nom ?></p>
                   <div class="d-grid d-md-block text-center">
                       <a href="#" class="btn btn-success mb-3 mx-2">Accepter</a>
                       <a href="#" class="btn btn-outline-danger mb-3 mx-2">Refuser</a>

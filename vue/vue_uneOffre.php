@@ -1,5 +1,5 @@
 <?php
-    include "vue/vue_entete.php";
+    require("vue/vue_entete.php");
 ?>
 
 <?php
@@ -14,7 +14,9 @@
 
 
 ?>
-
+    <?php if($errMesg != null): ?>
+        <p class="alert <?= $statusMesg ?>"><?= $errMesg ?></p>
+    <?php endif; ?>
     <h1 class="title fw-bold"><?= $intitoffre ?></h1>
     <div class="card bg-dark bg-opacity-25 text-white rounded border-dark border-3 col-3">
 
@@ -42,10 +44,10 @@
 
 
                 <p class="card-text"><?="Description du poste : ", $description ?></p>
-                <a href="index.php?section=postuler&idOffre=<?php echo $idOffreCandid ?>" class="btn btn-primary">Postuler</a>
+                <a href="index.php?section=postuler&idOffre=<?= $idOffreCandid ?>" class="btn btn-primary">Postuler</a>
             </div>
 
           </div>
           <a href="index.php?section=lesOffres" class="btn btn-primary mb-3 mt-3">Découvrir les offres</a>
 
-<?php include_once("vue/vue_footer.php"); ?>
+<?php require("vue/vue_footer.php"); ?>
