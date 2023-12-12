@@ -21,7 +21,7 @@
 
             <div class="vr border-3 border border-dark rounded-4 p-0"></div> <!-- Barre entre les deux parties -->
             <?php endif; ?>
-            <div class="col-md-6">
+            <div class="col-md-6 mx-auto">
               <h1 class="text-center text-white"><?= $isStudent ? "Mes candidatures" : "Réponse à une offre" ?></h1>
               <hr>
 
@@ -41,9 +41,19 @@
                 <h3 class="rounded-3 col-md-12 row w-75 mx-auto p-3 align-self-center text-white">Job: <?= $intitOffre ?></h3>
                 <p class="rounded-3 col-md-12 row w-75 mx-auto p-3 align-self-center text-white fw-bold">Employeur: <?= $prenom, " ", $nom ?></p>
                   <div class="d-grid d-md-block text-center">
+                      <?php if($isStudent): 
+                        if($uneActi["statutCandid"] == 2): ?>
+                        <p class="mb-3 mx-2 alert alert-primary">Votre candidature n'a été accepté par l'employeur.</p>
+                        <?php elseif($uneActi["statutCandid"] == 3): ?>
+                        <p class="mb-3 mx-2 alert alert-danger">Votre candidature a été refusé par l'employeur.</p>
+                        <?php else: ?>
+                        <p class="mb-3 mx-2 alert alert-warning">Votre candidature n'a pas encore été tratié.</p>
+                        <?php endif; ?>  
+                      <?php else: ?>
                       <a href="#" class="btn btn-success mb-3 mx-2">Accepter</a>
                       <a href="#" class="btn btn-outline-danger mb-3 mx-2">Refuser</a>
                       <a href="?section=unEtud" class="btn btn-primary mb-3 mx-2">Voir le profil</a>
+                      <?php endif; ?>
                   </div>
               </div>
             <?php

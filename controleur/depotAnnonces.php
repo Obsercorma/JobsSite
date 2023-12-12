@@ -8,7 +8,11 @@ $errMesg = null;
 $activites = getAllActivities();
 $typeContrats = getAllTypeContracts();
 
-
+$isEdit = isset($_GET["editOffre"]) ? intval($_GET["editOffre"]) : 0;
+$dataEditAnnon = [];
+if($isEdit != 0){
+    $dataEditAnnon = getOffer($isEdit);
+}
 
 if(isset(
     $_POST["titre"],
@@ -28,7 +32,7 @@ if(isset(
         $_POST["finPeriode"],
         $_POST["description"],
         $_SESSION["idUser"],
-        false
+        ($isEdit != 0)
     ))==0){
         header("Location: ?section=mesOffres");
     }else{

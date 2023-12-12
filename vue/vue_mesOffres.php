@@ -19,7 +19,7 @@
                 <br>
                 <p class="card-text"><?= $offer["descOffre"] ?></p>
                 <div class="d-flex flex-nowrap justify-content-between">
-                    <a href="?section=mesOffres&editOffre=<?= $offer["idOffre"] ?>" class="btn btn-primary col-6 btn-lg me-2">Modifier</a>
+                    <a href="?section=depotAnno&editOffre=<?= $offer["idOffre"] ?>" class="btn btn-primary col-6 btn-lg me-2">Modifier</a>
                     <a href="?section=mesOffres&delOffre=<?= $offer["idOffre"] ?>" class="btn btn-primary col-6 bg-transparent btn-lg ms-2">Supprimer</a>
                 </div>
                 </div>

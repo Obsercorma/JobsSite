@@ -29,7 +29,7 @@ function getApplicationsFromStudent($idStudent){
     $bdd = db_connect();
     if($bdd == null) throw new Exception("Erreur BDD!");
     if(!preg_match("/^[0-9]/", $idStudent)) throw new Exception("Identifiant inconnue ou mal formé !");
-    $req = $bdd->prepare("SELECT C.idEtudiant, O.*, E.* FROM candidature C INNER JOIN offre O ON C.idOffre = O.idOffre JOIN utilisateur E ON E.idUser = O.idEmployeur WHERE C.idEtudiant = ?");
+    $req = $bdd->prepare("SELECT C.idEtudiant, C.idStatut AS statutCandid, O.*, E.* FROM candidature C INNER JOIN offre O ON C.idOffre = O.idOffre JOIN utilisateur E ON E.idUser = O.idEmployeur WHERE C.idEtudiant = ?");
     if($req->execute([
         $idStudent
     ]))
