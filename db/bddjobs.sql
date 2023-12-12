@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : lun. 11 déc. 2023 à 11:14
+-- Généré le : mar. 12 déc. 2023 à 13:50
 -- Version du serveur : 10.4.22-MariaDB
 -- Version de PHP : 7.4.27
 
@@ -76,6 +76,7 @@ CREATE TABLE `candidature` (
 --
 
 INSERT INTO `candidature` (`idEtudiant`, `idOffre`, `idStatut`) VALUES
+(17, 1, 1),
 (17, 14, 1);
 
 -- --------------------------------------------------------
@@ -168,7 +169,8 @@ CREATE TABLE `statutcandid` (
 
 INSERT INTO `statutcandid` (`idStatut`, `intitStatut`) VALUES
 (1, 'En Attente'),
-(2, 'Validée');
+(2, 'Validée'),
+(3, 'Refusé');
 
 -- --------------------------------------------------------
 
@@ -224,7 +226,7 @@ INSERT INTO `utilisateur` (`idUser`, `civilite`, `nom`, `prenom`, `email`, `pass
 (9, 2, 'Marci', 'Francisa', 'mardi@gmail.com', '$2y$10$DEA2R.muuKN7CTxFwV5kj.nfAdiKXY3DvoyL0jP2YY/TRH5RUi2KW', '0458652384', 'defaultUser.png', NULL, 3, NULL),
 (10, 1, 'aa', 'aa', 'anthony@gmail.com', '$2y$10$8WCRdigfiTKmoDkcxPavIelSZV3NvZC98sqAUH9XBKbi/0t.Ou5Bi', '11111', 'defaultUser.png', NULL, 2, NULL),
 (11, 2, 'FLAFLA', 'Thomito', 'thotho@gmail.com', '$2y$10$KtaDOvsv9G/asqI5gf2VPOYAmgsrEX2sUlQvcNfWU8hCrgLYGo0hS', '77777', 'defaultUser.png', NULL, 1, NULL),
-(17, 1, 'JS', 'Jest', 'jestjs@example.org', '$2y$10$ERCYUj7gkKnpXahPMjN/Vub7aIOXiL47fPQbiNh4eBpPx9VT78rsK', '0624897531', 'defaultUser.png', NULL, 1, NULL);
+(17, 1, 'JS', 'Jest', 'jestjs@example.org', '$2y$10$ERCYUj7gkKnpXahPMjN/Vub7aIOXiL47fPQbiNh4eBpPx9VT78rsK', '0624897531', 'defaultUser.png', 'storage/ead28feaf5.pdf', 1, NULL);
 
 --
 -- Index pour les tables déchargées
@@ -321,7 +323,7 @@ ALTER TABLE `statut`
 -- AUTO_INCREMENT pour la table `statutcandid`
 --
 ALTER TABLE `statutcandid`
-  MODIFY `idStatut` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idStatut` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT pour la table `typecontrat`
