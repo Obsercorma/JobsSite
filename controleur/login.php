@@ -3,6 +3,7 @@
 require_once("modele/mod_login.php");
 require_once("modele/mod_status.php");
 
+$title_page = "Connexion/Inscription";
 $errMesgConnect = null;
 $errMesgRegister = null;
 

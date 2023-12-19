@@ -5,6 +5,7 @@ require_once("modele/mod_activites.php");
 require_once("modele/mod_type_contrat.php");
 
 $errMesg = null;
+$title_page = "Déposer une annonce";
 $activites = getAllActivities();
 $typeContrats = getAllTypeContracts();
 

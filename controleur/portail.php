@@ -1,8 +1,9 @@
 <?php
 
-    // modele
-    include_once('modele/mod_annonces.php');
-    $dernieresAnnonces = getTopOffers();
+$title_page = "Jobs | Portail";
+// modele
+include_once('modele/mod_annonces.php');
+$dernieresAnnonces = getTopOffers();
 
-    // affichage de  la    vue associée
-    include_once('vue/vue_portail.php');
+// affichage de  la    vue associée
+include_once('vue/vue_portail.php');

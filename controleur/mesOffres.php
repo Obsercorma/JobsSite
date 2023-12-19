@@ -4,6 +4,7 @@
 require_once("modele/mod_dashboard.php");
 require_once("modele/mod_annonces.php");
 
+$title_page = "Mes offres";
 $listOffers = getOffersFromEmployer($_SESSION["idUser"]);
 
 if(isset($_GET["delOffre"])){

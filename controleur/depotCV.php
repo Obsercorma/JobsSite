@@ -2,6 +2,7 @@
 require_once("modele/mod_depot.php");
 // affichage de  la    vue associée
 $statusMesg = null;
+$title_page = "Déposer son CV";
 $statusClassname = "alert-warning";
 if(session_status() === PHP_SESSION_NONE) session_start();
 if(isset(

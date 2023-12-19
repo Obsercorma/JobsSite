@@ -1,8 +1,9 @@
 <?php
 
-    // modele
-    include_once('modele/mod_etudiants.php');
-    $lesEtudiants = getAllStudents();
+$title_page = "Liste des étudiants";
+// modele
+include_once('modele/mod_etudiants.php');
+$lesEtudiants = getAllStudents();
 
-    // affichage de  la    vue associée
-    include_once('vue/vue_listeEtudiants.php');
+// affichage de  la    vue associée
+include_once('vue/vue_listeEtudiants.php');

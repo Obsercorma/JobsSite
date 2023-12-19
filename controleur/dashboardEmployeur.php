@@ -1,6 +1,7 @@
 <?php
 
-  $cnxSession = $_SESSION["idUser"];
+$cnxSession = $_SESSION["idUser"];
+$title_page = "Tableau de bord employeur";
 // modele
 include_once('modele/mod_etudiants.php');
 $dashboardEmploy = getEmployer($cnxSession);

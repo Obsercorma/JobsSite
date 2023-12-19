@@ -1,5 +1,6 @@
 <?php
 
+$title_page = "Postuler à une annonce";
 $idOffreCandid = $_GET["idOffre"];
 $idEtudiantCandid = $_SESSION["idUser"];
 

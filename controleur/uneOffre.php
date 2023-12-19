@@ -1,4 +1,5 @@
 <?php
+$title_page = "Détail de l'annonce";
 
 // modele
 include_once('modele/mod_annonces.php');
