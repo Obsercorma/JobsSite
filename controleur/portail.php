@@ -3,6 +3,8 @@
 $title_page = "Jobs | Portail";
 // modele
 include_once('modele/mod_annonces.php');
+
+
 $dernieresAnnonces = getTopOffers();
 
 // affichage de  la    vue associée

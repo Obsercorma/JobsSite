@@ -9,7 +9,8 @@ define("INCORRECT_IDACT", 3);
 define("INCORRECT_CONTRACT_TYPE", 4);
 define("INCORRECT_WORK_LOCATION",5);
 define("INCORRECT_DESCRIPTION",6);
-define("ERR_BDD_ADD_OFFER", 7);
+define("BDD_ERR", 7);
+define("OFFER_SEARCH_EMPTY", 8);
 
 /**
  * Récupère les 3 dernières offres
@@ -113,7 +114,7 @@ function addOffer(
         "finPeriod"=>$finPeriod,
         "descOffre"=>$descContract,
         "idEmployeur"=>$idEmployeur
-    ])) return ERR_BDD_ADD_OFFER;
+    ])) return BDD_ERR;
     return SUCCESS_ADDING_OFFER;
 }
 
@@ -133,6 +134,24 @@ function delOffer($idOffre, $idEmployeur){
         "idEmployeur"=>$idEmployeur
     ])) return false;
     return true;
+}
+
+/**
+ * @param string $searchContent Contenu de la barre de recherche
+ * @throws PDOException
+ * @return array|int Retourne une liste associative des offres en fonction de la recherche. 
+ * En cas d'erreur, un code de status sera retourné.
+ */
+function getOffersFromSearchBar($searchContent){
+    $bdd = db_connect();
+    if($bdd == null) throw new Exception("Erreur BDD!");
+
+    $req = $bdd->prepare("SELECT * FROM offre O INNER JOIN activite A ON O.idAct = A.idAct WHERE LOWER(O.intitoffre) LIKE :content OR LOWER(O.descOffre) LIKE :content;");
+    if(!$req->execute([
+        "content"=>"%{$searchContent}%"
+    ])) return BDD_ERR;
+    if($req->rowCount()==0) return OFFER_SEARCH_EMPTY;
+    return $req->fetchAll(PDO::FETCH_ASSOC);
 }
 
 ?>

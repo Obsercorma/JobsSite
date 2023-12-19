@@ -12,7 +12,7 @@
 
                       <?php
                             $comptage = 0;
-
+                            if(is_array($lesOffres)){
                             foreach($lesOffres as $uneOffre)
                             {
                               $idOffre = $uneOffre['idOffre'];
@@ -44,10 +44,7 @@
                               </div>
                                 <div class="cards">
                                   <div class="row justify-content-around mb-3">
-                      <?php
-                              }
-                            }
-                      ?>
+                      <?php } } } ?>
 
           </div>
       </div>

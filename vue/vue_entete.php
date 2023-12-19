@@ -31,10 +31,11 @@
                     
 <!--- BARRE DE RECHERCHE ----------------------------------------------------------------------------------->
                         <div class="col-lg-4 align-self-center mb-3">
-                            <form class="d-flex" role="search">
+                            <form class="d-flex" action="" method="get" role="search">
 
+                            <input type="hidden" value="lesOffres" name="section">
                                 <div class="input-group">
-                                    <input class="form-control" type="search" placeholder="Un job en tête ?" aria-label="Search">
+                                    <input class="form-control" name="search" type="search" placeholder="Un job en tête ?" aria-label="Search">
                                     <button class="btn btn-primary" type="submit">Rechercher</button>
                                 </div>
 
