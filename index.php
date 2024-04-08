@@ -1,5 +1,7 @@
 <?php
 
+define("DEBUG_MODE", true);
+
 if(session_status() === PHP_SESSION_NONE) session_start();
 $isConnected = isset($_SESSION["idUser"]);
 $cnxSession = $isConnected ? $_SESSION["idUser"] : 0;

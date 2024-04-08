@@ -4,7 +4,7 @@
  * @return PDO|null
  */
 function db_connect(){
-    $db_host = "172.30.0.235";
+    $db_host = DEBUG_MODE ? "localhost" :"172.30.0.235";
     $db_name = "bddjobs";
     $db_charset = "utf8";
     $db_user = "bddjobs_user";

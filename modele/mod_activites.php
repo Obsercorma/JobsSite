@@ -10,7 +10,7 @@ function getAllActivities(){
     $bdd = db_connect();
     if($bdd == null) throw new PDOException("Erreur BDD!");
 
-    $req = $bdd->prepare("SELECT * FROM activite");
+    $req = $bdd->prepare("SELECT * FROM activite ORDER BY intitAct ASC");
     if(!$req->execute()) return false;
     return !($result=$req->fetchAll(PDO::FETCH_ASSOC)) ? [] : $result;
 }

@@ -33,7 +33,7 @@ function getOfferFromEmployer($idEmployeur){
     if($bdd == null) throw new Exception("Erreur BDD!");
 
     if(!preg_match("/[0-9]+/", $idEmployeur)) return false;
-    $req = $bdd->prepare("SELECT * FROM offre WHERE idEmployeur = ?");
+    $req = $bdd->prepare("SELECT * FROM offre O INNER JOIN activite A ON A.idAct = O.idAct WHERE idEmployeur = ?");
     if(!$req->execute([$idEmployeur])) return false;
     return $req->fetchAll(PDO::FETCH_ASSOC);
 }
@@ -48,7 +48,7 @@ function getOffer($idOffre){
 
     if(!preg_match("/[0-9]+/", $idOffre)) return false;
 
-    $req = $bdd->prepare("SELECT * FROM offre WHERE idOffre = ?");
+    $req = $bdd->prepare("SELECT * FROM offre O INNER JOIN activite A ON A.idAct = O.idAct WHERE idOffre = ?");
     if(!$req->execute([$idOffre])) return false;
     return $req->fetch(PDO::FETCH_ASSOC);
 }
@@ -96,10 +96,10 @@ function addOffer(
         $req = $bdd->prepare("UPDATE offre SET intitoffre = :intitOffre,
         idAct = :idAct,
         lieuTravail = :workLocation,
-        idContrat =) :contractType,
+        idContrat = :contractType,
         debutPeriod = :debutPeriod,
         finPeriod = :finPeriod,
-        descOffre = :descOffre,
+        descOffre = :descOffre
         WHERE idEmployeur = :idEmployeur");
     }else{
         $req = $bdd->prepare("INSERT INTO offre(intitoffre,idAct,lieuTravail,idContrat,debutPeriod,finPeriod,descOffre,idEmployeur) 

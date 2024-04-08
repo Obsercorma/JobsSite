@@ -15,7 +15,7 @@
                 <img src="vue/images/user.png" class="card-img-top mt-2">
                 <div class="card-body">
                 <h3 class="card-title"><?= $offer["intitoffre"] ?></h3>
-                <h6>Secteur : <u>Grande distribution</u></h6>
+                <h6>Secteur : <u><?= $offer["intitAct"] ?></u></h6>
                 <br>
                 <p class="card-text"><?= $offer["descOffre"] ?></p>
                 <div class="d-flex flex-nowrap justify-content-between">

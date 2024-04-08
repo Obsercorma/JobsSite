@@ -12,25 +12,27 @@ define("INCORRECT_STATUS_WORK",5);
 define("USER_INSERTION_ERROR", 6);
 define("INCORRECT_CIV",7);
 define("USER_ALREADY_EXISTS",8); // L'utilisateur est deja present dans le BDD.
-
+define("ERR_DBCONNECT_USER", 9);
+define("INCORRECT_PASSWORD", 10); // À utiliser pour le debug uniquement
 /**
  * Methode d'authentification utilisateur
  * La creation de la session est geré en cas de succes
  * @param string $useremail Nom d'utilisateur
  * @param string $passwd Mot de passe
- * @return array|false Retourne les informations si l'authentification est un succes
+ * @return array|int Retourne les informations si l'authentification est un succes
  */
 function loginUser($useremail, $passwd){
     $bdd = db_connect();
-    if($bdd == null) throw new Exception("Erreur BDD!");
+    if($bdd == null) throw new PDOException("Erreur BDD!");
 
-    if(!filter_var($useremail, FILTER_VALIDATE_EMAIL)) return false;
+    if(!filter_var($useremail, FILTER_VALIDATE_EMAIL)) return INCORRECT_EMAIL;
 
     $req = $bdd->prepare("SELECT * FROM utilisateur WHERE email = ?");
-    if(!$req->execute([$useremail])) return false;
+    if(!$req->execute([$useremail])) return ERR_DBCONNECT_USER;
     $data = $req->fetch(PDO::FETCH_ASSOC);
-    if($req->rowCount()==0) return false;
-    if(!password_verify($passwd, $data["passwd"])) return false;
+    var_dump($data);
+    if(!$data) return INCORRECT_CREDENTIALS;
+    if(!password_verify($passwd, $data["passwd"])) return INCORRECT_PASSWORD;
     return $data;
 }
 /**

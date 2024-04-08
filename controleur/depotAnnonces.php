@@ -39,7 +39,6 @@ if(isset(
     }else{
         $errMesg = "une erreur s'est produite lors du dépôt de votre annonce.";
     }
-    var_dump($result);
 }
 
 

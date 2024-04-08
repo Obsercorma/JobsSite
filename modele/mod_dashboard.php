@@ -12,7 +12,7 @@ function getOffersFromEmployer($idEmployer){
     $bdd = db_connect();
     if($bdd == null) throw new Exception("Erreur BDD!");
     if(!preg_match("/^[0-9]/", $idEmployer)) throw new Exception("Identifiant inconnue ou mal formé !");
-    $req = $bdd->prepare("SELECT * FROM offre WHERE idEmployeur = ?");
+    $req = $bdd->prepare("SELECT * FROM offre O INNER JOIN activite A ON A.idAct = O.idAct WHERE idEmployeur = ?");
     if(!$req->execute([
         $idEmployer
     ]))
