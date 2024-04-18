@@ -5,7 +5,7 @@
 <body>
     <h1 class="fw-bold">Tableau de bord étudiant</h1>
     <h2 class="fw-bold mx-auto">
-        Bonjour Prénom Nom
+        <em>Bonjour <?= $cnxSessionPrenom, " ", $cnxSessionNom?></em>
     </h2>
     <section class="actions-grp">
         <div class="card border-0">

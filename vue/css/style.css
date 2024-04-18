@@ -50,7 +50,16 @@ body{
     margin: 15px;
     width: fit-content;
 }
-
+.cards>.row>.card{
+    backdrop-filter: blur(6px) !important;
+    background-color: #ffffff42 !important;
+}
 .logoEntete{
   width: 35%;
+}
+.w-60{
+    width: 60% !important;
+}
+.h-60{
+    height: 60% !important;
 }

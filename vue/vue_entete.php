@@ -7,48 +7,52 @@
     <title><?= $title_page ?? "Jobs" ?></title>
     <link rel="stylesheet" href="vue/css/style.css">
     <link rel="stylesheet" href="vue/css/bootstrap.min.css">
-    <script href="vue/js/bootstrap.bundle.min.js" defer></script>
+    <link rel="icon" href="vue/images/J.ico" type="image/x-icon">
+    <script src="vue/js/bootstrap.bundle.min.js" defer></script>
 </head>
 
-<body>
-  <div class="row">
-        <div>
-            <img src="" title="logo">
-            <a href="#"></a>
-        </div>
+<body class="p-0">
+    <div class="row">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+                <div class="row justify-content-between">
 
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                    
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-        <nav class="navbar">
-          <div class="container-fluid">
-
-            <div class="row justify-content-between">
-              <div class="col-4">
-                <a class="navbar-brand">
-                  <img src="vue/images/logoJobsEtudiant.jpg" class="logoEntete">
-                </a>
-              </div>
+                    <div class="col-lg-4 align-self-center">
+                        <a class="ms-3 navbar-brand ms-3 navbar-brand d-md-flex justify-content-md-center" href="index.php">
+                            <img src="vue/images/logoJobsEtudiant.jpg" class="logoEntete">
+                        </a>
+                    </div>
+                    
 <!--- BARRE DE RECHERCHE ----------------------------------------------------------------------------------->
-            <div class="col-4">
-              <form class="d-flex" role="search">
+                        <div class="col-lg-4 align-self-center mb-3">
+                            <form class="d-flex" action="" method="get" role="search">
 
-                <div class="form-floating">
-                  <input class="form-control me-2" type="search" id="floatingInput" placeholder="Une demande ?" aria-label="Search">
-                  <label for="floatingInput">Un job en tête ?</label>
-                </div>
+                            <input type="hidden" value="lesOffres" name="section">
+                                <div class="input-group">
+                                    <input class="form-control" name="search" type="search" placeholder="Un job en tête ?" aria-label="Search">
+                                    <button class="btn btn-primary" type="submit">Rechercher</button>
+                                </div>
 
-                  <button class="btn btn-primary" type="submit">Rechercher</button>
-              </form>
-            </div>
-
+                            </form>
+                        </div>
+  
 <!-- CONNEXION / INSCRIPTION  ------------------------------------------------------------------------------>
-            <div class="col-4 align-self-end">
-              <div class="">
-                  <a href="index.php?section=dashboardEtud" class="btn btn-primary">Se Connecter</a>
-                  <a href="index.php?section=dashboardEmploi" class="btn btn-primary">S'inscrire</a>
-              </div>
+                        <div class="col-lg-4 align-self-center mb-3">
+                            <div class="d-flex justify-content-md-around justify-content-lg-end">
+                                <a href="index.php?section=<?= $isConnected ? "logout" : "login" ?>" class="btn btn-<?= $isConnected ? "danger" : "success" ?>"><?= $isConnected ? "Se déconnecter" : "Se Connecter/S'inscrire" ?></a>
+                                <?php if($isConnected): ?>
+                                    <a href="?section=<?= intval($_SESSION["status"])!=1 ? "dashboardEmploi" : "dashboardEtud" ?>" class="btn btn-primary">Mon tableau de bord</a>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-          </div>
-        </div>
-      </nav>
+        </nav>
     </div>
