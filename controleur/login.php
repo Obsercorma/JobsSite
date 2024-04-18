@@ -6,31 +6,34 @@ require_once("modele/mod_status.php");
 $title_page = "Connexion/Inscription";
 $errMesgConnect = null;
 $errMesgRegister = null;
-$showDebug = true;
 
 
 if(isset(
     $_POST["userlogin"],
     $_POST["passwdlogin"]
 )){
-    if(($data=loginUser($_POST["userlogin"], $_POST["passwdlogin"]))){
-        if($showDebug and DEBUG_MODE){
-            var_dump($data);
-            var_dump([$_POST["userlogin"],
-            $_POST["passwdlogin"]]);
-        }
-        if(is_array($data)){
-            if(session_status() === PHP_SESSION_NONE) session_start();
-            $_SESSION["idUser"] = $data["idUser"];
-            $_SESSION["prenom"] = $data["prenom"];
-            $_SESSION["nom"] = $data["nom"];
-            $_SESSION["email"] = $data["email"];
-            $_SESSION["status"] = $data["idStatut"];
-            if($data["idStatut"] == 1) header("Location: ?section=dashboardEtud");
-            else header("Location: ?section=dashboardEmploi");
-        }
+    if(DEBUG_MODE){
+        var_dump([$_POST["userlogin"],
+        $_POST["passwdlogin"]]);
+    }
+    $data = 0;
+    if(is_array(($data=loginUser($_POST["userlogin"], $_POST["passwdlogin"])))){
+        if(session_status() === PHP_SESSION_NONE) session_start();
+        $_SESSION["idUser"] = $data["idUser"];
+        $_SESSION["prenom"] = $data["prenom"];
+        $_SESSION["nom"] = $data["nom"];
+        $_SESSION["email"] = $data["email"];
+        $_SESSION["status"] = $data["idStatut"];
+        if($data["idStatut"] == 1) header("Location: ?section=dashboardEtud");
+        else header("Location: ?section=dashboardEmploi");
     }else{
-        $errMesgConnect = "L'identifiant ou le mot de passe est incorrect !";
+        var_dump($data);
+        switch($data){
+            case BANNED_USER:
+                $errMesgConnect = "Connexion impossible ! Votre compte a été désactivé !"; break;
+            default:
+                $errMesgConnect = "L'identifiant ou le mot de passe est incorrect "; break;
+        }
     }
 }
 

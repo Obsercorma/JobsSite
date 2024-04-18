@@ -14,6 +14,7 @@ define("INCORRECT_CIV",7);
 define("USER_ALREADY_EXISTS",8); // L'utilisateur est deja present dans le BDD.
 define("ERR_DBCONNECT_USER", 9);
 define("INCORRECT_PASSWORD", 10); // À utiliser pour le debug uniquement
+define("BANNED_USER", 11);
 /**
  * Methode d'authentification utilisateur
  * La creation de la session est geré en cas de succes
@@ -30,9 +31,9 @@ function loginUser($useremail, $passwd){
     $req = $bdd->prepare("SELECT * FROM utilisateur WHERE email = ?");
     if(!$req->execute([$useremail])) return ERR_DBCONNECT_USER;
     $data = $req->fetch(PDO::FETCH_ASSOC);
-    var_dump($data);
     if(!$data) return INCORRECT_CREDENTIALS;
     if(!password_verify($passwd, $data["passwd"])) return INCORRECT_PASSWORD;
+    if(intval($data["isBan"]) == 1) return BANNED_USER;
     return $data;
 }
 /**

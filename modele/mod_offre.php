@@ -34,5 +34,4 @@ function applyAJob($idOffre, $idEtudiant){
     }
     return OFFER_ADDED;
 }
-
 ?>

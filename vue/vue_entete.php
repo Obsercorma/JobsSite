@@ -32,20 +32,17 @@
 <!--- BARRE DE RECHERCHE ----------------------------------------------------------------------------------->
                         <div class="col-lg-4 align-self-center mb-3">
                             <form class="d-flex" action="" method="get" role="search">
-
-                            <input type="hidden" value="lesOffres" name="section">
                                 <div class="input-group">
-                                    <input class="form-control" name="search" type="search" placeholder="Un job en tête ?" aria-label="Search">
+                                    <input class="form-control" name="searchOffer" type="search" placeholder="Un job en tête ?" aria-label="Search" value="<?= isset($dataSearch) ? $dataSearch : "" ?>">
                                     <button class="btn btn-primary" type="submit">Rechercher</button>
                                 </div>
-
                             </form>
                         </div>
   
 <!-- CONNEXION / INSCRIPTION  ------------------------------------------------------------------------------>
                         <div class="col-lg-4 align-self-center mb-3">
                             <div class="d-flex justify-content-md-around justify-content-lg-end">
-                                <a href="index.php?section=<?= $isConnected ? "logout" : "login" ?>" class="btn btn-<?= $isConnected ? "danger" : "success" ?>"><?= $isConnected ? "Se déconnecter" : "Se Connecter/S'inscrire" ?></a>
+                                <a href="index.php?section=<?= $isConnected ? "logout" : "login" ?>" class="btn btn-<?= $isConnected ? "danger" : "success" ?> me-2"><?= $isConnected ? "Se déconnecter" : "Se Connecter/S'inscrire" ?></a>
                                 <?php if($isConnected): ?>
                                     <a href="?section=<?= intval($_SESSION["status"])!=1 ? "dashboardEmploi" : "dashboardEtud" ?>" class="btn btn-primary">Mon tableau de bord</a>
                                 <?php endif; ?>

@@ -141,17 +141,16 @@ function delOffer($idOffre, $idEmployeur){
  * @throws PDOException
  * @return array|int Retourne une liste associative des offres en fonction de la recherche. 
  * En cas d'erreur, un code de status sera retourné.
+ * @deprecated
  */
-function getOffersFromSearchBar($searchContent){
+function getOffersFromSearchBar($searchValue){
     $bdd = db_connect();
-    if($bdd == null) throw new Exception("Erreur BDD!");
+    if($bdd == null) throw new PDOException("Erreur BDD!");
 
-    $req = $bdd->prepare("SELECT * FROM offre O INNER JOIN activite A ON O.idAct = A.idAct WHERE LOWER(O.intitoffre) LIKE :content OR LOWER(O.descOffre) LIKE :content;");
-    if(!$req->execute([
-        "content"=>"%{$searchContent}%"
-    ])) return BDD_ERR;
-    if($req->rowCount()==0) return OFFER_SEARCH_EMPTY;
-    return $req->fetchAll(PDO::FETCH_ASSOC);
+    $reqSearchOffers = $bdd->prepare("SELECT * FROM offre O INNER JOIN activite A ON O.idAct = A.idAct WHERE LOWER(O.intitoffre) LIKE :searchValue OR LOWER(O.descOffre) LIKE :searchValue");
+    if(!$reqSearchOffers->execute(["searchValue"=> "%{$searchValue}%"])) return false;
+    return $reqSearchOffers->fetchAll(PDO::FETCH_ASSOC);
 }
+
 
 ?>

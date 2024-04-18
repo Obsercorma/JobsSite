@@ -29,11 +29,38 @@ function getApplicationsFromStudent($idStudent){
     $bdd = db_connect();
     if($bdd == null) throw new Exception("Erreur BDD!");
     if(!preg_match("/^[0-9]/", $idStudent)) throw new Exception("Identifiant inconnue ou mal formé !");
-    $req = $bdd->prepare("SELECT C.idEtudiant, C.idStatut AS statutCandid, O.*, E.* FROM candidature C INNER JOIN offre O ON C.idOffre = O.idOffre JOIN utilisateur E ON E.idUser = O.idEmployeur WHERE C.idEtudiant = ?");
+    $req = $bdd->prepare("SELECT C.idEtudiant,C.idStatut statutCandid,E.idUser idEmployeur,E.civilite civEmployeur,E.nom nomEmployeur,E.prenom prenomEmployeur,E.email emailEmployeur,E.tel telEmployeur,O.* FROM candidature C INNER JOIN offre O ON C.idOffre = O.idOffre JOIN utilisateur E ON E.idUser = O.idEmployeur WHERE C.idEtudiant = ?");
     if($req->execute([
         $idStudent
     ]))
     return $req->fetchAll(PDO::FETCH_ASSOC);
 }
 
+/**
+ * @param int|string $idEmployeur
+ * @return array|false
+ * @throws PDOException
+ */
+function getSpontaneousCandidacies($idEmployeur){
+    $bdd = db_connect();
+    if($bdd == null) throw new PDOException("Erreur BDD!");
+
+    $reqSearchOffers = $bdd->prepare("SELECT C.idEtudiant, C.idStatut statutCandid, S.nom, S.prenom, S.email, S.tel, O.* FROM candidature C INNER JOIN offre O ON C.idOffre = O.idOffre INNER JOIN utilisateur S ON S.idUser = C.idEtudiant INNER JOIN utilisateur E ON E.idUser = O.idEmployeur WHERE O.idEmployeur = ?");
+    if(!$reqSearchOffers->execute([$idEmployeur])) return false;
+    return $reqSearchOffers->fetchAll(PDO::FETCH_ASSOC);
+}
+/**
+ * @param int|string $idStudent
+ * @param int|string $idOffre
+ * @param bool $isAccepted
+ * @return bool
+ * @throws PDOException
+ */
+function updateStatusCandidacy($idStudent, $idOffre, $isAccepted){
+    $bdd = db_connect();
+    if($bdd == null) throw new PDOException("Erreur BDD!");
+
+    $reqUpdateStatus = $bdd->prepare("UPDATE candidature SET idStatut = ? WHERE idEtudiant = ? AND idOffre = ?");
+    return $reqUpdateStatus->execute([$isAccepted ? 2 : 3, $idStudent, $idOffre]);
+}
 ?>

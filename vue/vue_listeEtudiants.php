@@ -27,7 +27,7 @@
                                     </div>
                                     <div class="card-footer">
                                        <p class="card-text"><?= $biographie ?></p>
-                                       <a href="index.php?section=unEtud&idOffre=<?= $idEtudiant ?>" class="btn btn-primary fw-bold border-2">Consulter le profil</a>
+                                       <a href="index.php?section=unEtud&idEtudiant=<?= $idEtudiant ?>" class="btn btn-primary fw-bold border-2">Consulter le profil</a>
                                     </div>
                                 </div>
                       <?php

@@ -1,10 +1,14 @@
 <?php
 
-define("DEBUG_MODE", true);
+define("DEBUG_MODE", false);
 
 if(session_status() === PHP_SESSION_NONE) session_start();
 $isConnected = isset($_SESSION["idUser"]);
 $cnxSession = $isConnected ? $_SESSION["idUser"] : 0;
+
+if(isset($_GET["searchOffer"])){
+	header("Location: ?section=lesOffres&query=".htmlspecialchars($_GET["searchOffer"]));
+}
 
 if (!isset($_GET['section']) OR $_GET['section'] == 'index')
 {

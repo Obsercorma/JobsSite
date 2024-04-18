@@ -2,7 +2,7 @@
 
 //modele
 include_once('modele/mod_etudiants.php');
-$id = $_GET['idOffre'];
+$id = $_GET['idEtudiant'];
 $profilEtudiant = getStudent($id);
 $title_page = "Profil de {$profilEtudiant['prenom']} {$profilEtudiant['nom']}";
 
