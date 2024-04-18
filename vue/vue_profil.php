@@ -16,7 +16,9 @@
               <h4 class="card-title"><?= $nomEtudiant," ", $prenomEtudiant?></h4>
                 <p class="card-text"><?= $bioEtudiant ?></p>
                 <a href="#" class="btn btn-primary">Envoyer un message</a>
-                <a href="#" class="btn btn-light">Voir son CV</a>
+                <?php if($profilEtudiant["cvUser"]): ?>
+                <a target="_blank" href="/storage/<?= $profilEtudiant["cvUser"] ?>" class="btn btn-light">Voir son CV</a>
+                <?php endif; ?>
             </div>
 
           </div>
