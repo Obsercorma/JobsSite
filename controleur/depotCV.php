@@ -21,7 +21,7 @@ if(isset(
     }
 }
 $cvStudent = hasCVAlready($cnxSession);
-$pathCVStudent = $cvStudent ? "/{$cvStudent}" : null;
+$pathCVStudent = $cvStudent ? "/storage/{$cvStudent}" : null;
     
 include_once('vue/vue_depotCV.php');
 

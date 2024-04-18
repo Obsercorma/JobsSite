@@ -46,10 +46,10 @@ function depotCV($fileName, $tmpFilename, $fileSize, $idUser){
         $extFile,
         $allowedFormats
     ) and $fileSize <= $allowedFileSize){
-        $randomFileName = "storage/" . genRandomName() . ".{$extFile}";
-        if(move_uploaded_file($tmpFilename, $randomFileName)){
+        $randomFileName = genRandomName() . ".{$extFile}";
+        if(move_uploaded_file($tmpFilename, "storage".DIRECTORY_SEPARATOR.$randomFileName)){
             $hasCV = hasCVAlready($idUser);
-            if($hasCV) unlink(dirname(__DIR__).DIRECTORY_SEPARATOR.$hasCV);
+            if($hasCV) unlink(dirname(__DIR__).DIRECTORY_SEPARATOR."storage".DIRECTORY_SEPARATOR.$hasCV);
             $req = $bdd->prepare("UPDATE utilisateur SET cvUser = ? WHERE idUser = ?");
             if(!$req->execute([$randomFileName, $idUser])) return "Une erreur interne empêche le téléversement de votre CV !";
             return "Votre CV a bien été déposé";
