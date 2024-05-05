@@ -1,53 +1,57 @@
 <?php
-    require("vue/vue_entete.php");
+require("vue/vue_entete.php");
 ?>
 
 <?php
-        $intitoffre = $uneOffre['intitoffre'];
-        $lieutravail = $uneOffre['lieuTravail'];
-        $debutperiode = $uneOffre['debutPeriod'];
-        $finperiode = $uneOffre['finPeriod'];
-        $description = $uneOffre['descOffre'];
-        $datepublication = $uneOffre['datePublication'];
-        $idcontrat = $uneOffre['idContrat'];
-        $idOffreCandid = $uneOffre['idOffre'];
+$intitoffre = $uneOffre['intitoffre'];
+$lieutravail = $uneOffre['lieuTravail'];
+$debutperiode = $uneOffre['debutPeriod'];
+$finperiode = $uneOffre['finPeriod'];
+$description = $uneOffre['descOffre'];
+$datepublication = $uneOffre['datePublication'];
+$idcontrat = $uneOffre['idContrat'];
+$idOffreCandid = $uneOffre['idOffre'];
 
 
 ?>
-    <?php if($errMesg != null): ?>
+<?php if ($errMesg != null) : ?>
         <p class="alert <?= $statusMesg ?>"><?= $errMesg ?></p>
-    <?php endif; ?>
-    <h1 class="title fw-bold"><?= $intitoffre ?></h1>
-    <div class="card bg-dark bg-opacity-25 text-white rounded border-dark border-3 col-3">
+<?php endif; ?>
+<h1 class="title fw-bold"><?= $intitoffre ?></h1>
+<div class="card bg-dark bg-opacity-25 text-white rounded border-dark border-3 col-3">
 
-            <img src="vue/images/user.png" class="card-img-top">
-            <div class="card-body">
-              <hr>
-              <h4 class="card-title"><?= $intitoffre?></h4>
-                <em><h6 class="card-text"><?="Publié le ", $datepublication ?></h6></em>
-                <p class="card-text"><?="Lieu de travail : ", $lieutravail ?></p>
+        <img src="vue/images/user.png" class="card-img-top">
+        <div class="card-body">
+                <hr>
+                <h4 class="card-title"><?= $intitoffre ?></h4>
+                <em>
+                        <h6 class="card-text"><?= "Publié le ", $datepublication ?></h6>
+                </em>
+                <p class="card-text"><?= "Lieu de travail : ", $lieutravail ?></p>
                 <?php
-                      if(!is_null($finperiode)){
+                if (!is_null($finperiode)) {
                 ?>
-                        <p class="card-text"><?="Du ", $debutperiode," au ", $finperiode ?></p>
+                        <p class="card-text"><?= "Du ", $debutperiode, " au ", $finperiode ?></p>
                 <?php
-                      }elseif ($idcontrat==1) {
+                } elseif ($idcontrat == 1) {
                 ?>
-                        <p class="card-text"><?="Le ", $debutperiode ?></p>
+                        <p class="card-text"><?= "Le ", $debutperiode ?></p>
                 <?php
-                      }elseif ($idcontrat==3) {
+                } elseif ($idcontrat == 3) {
                 ?>
-                        <p class="card-text"><?="A partir du ", $debutperiode ?></p>
+                        <p class="card-text"><?= "A partir du ", $debutperiode ?></p>
                 <?php
-                      }
+                }
                 ?>
 
 
-                <p class="card-text"><?="Description du poste : ", $description ?></p>
-                <a href="index.php?section=postuler&idOffre=<?= $idOffreCandid ?>" class="btn btn-primary">Postuler</a>
-            </div>
+                <p class="card-text"><?= "Description du poste : ", $description ?></p>
+                <?php if ($isStudent) : ?>
+                        <a href="index.php?section=postuler&idOffre=<?= $idOffreCandid ?>" class="btn btn-primary">Postuler</a>
+                <?php endif; ?>
+        </div>
 
-          </div>
-          <a href="index.php?section=lesOffres" class="btn btn-primary mb-3 mt-3">Découvrir les offres</a>
+</div>
+<a href="index.php?section=lesOffres" class="btn btn-primary mb-3 mt-3">Découvrir les offres</a>
 
 <?php require("vue/vue_footer.php"); ?>

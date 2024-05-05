@@ -13,6 +13,7 @@
                       <?php
                             $comptage = 0;
                             if(is_array($lesOffres)){
+                            $c_Offers = count($lesOffres);
                             foreach($lesOffres as $uneOffre)
                             {
                               $idOffre = $uneOffre['idOffre'];
@@ -20,7 +21,7 @@
                               $secteur = $uneOffre['intitAct'];
                               $description = $uneOffre['descOffre'];
                       ?>
-                                <div class="card text-center fw-bold col-3 border-3 border-dark">
+                                <div class="card text-center fw-bold <?= $c_Offers > 1 ? "col-3" : "col-7" ?> border-3 border-dark">
                                     <div class="card-body d-flex flex-column justify-content-center align-items-center">
                                         <img src="vue/images/user.png" alt="Etudiant" class="img-student w-75">
                                         <h3 class="student-name"><?= $intitOffre ?></h3>

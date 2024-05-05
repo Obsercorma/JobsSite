@@ -19,9 +19,9 @@ function applyAJob($idOffre, $idEtudiant){
     $bdd = db_connect();
     if($bdd == null) throw new PDOException("Erreur BDD!");
 
-    $reqVerifyStudent = $bdd->prepare("SELECT idUser FROM utilisateur WHERE idUser = ? AND idStatut = 1");
+    $reqVerifyStudent = $bdd->prepare("SELECT idUser FROM utilisateur WHERE idUser = ?");
     if(!$reqVerifyStudent->execute([intval($idEtudiant)])) return ERROR_BDD_OFFER;
-    if($reqVerifyStudent->rowCount()==0) return USER_NOT_FOUND;
+    if($reqVerifyStudent->rowCount()==0) return OFFER_NOT_FOUND;
     $reqVerifyOffer = $bdd->prepare("SELECT idOffre FROM offre WHERE idOffre = ?");
     if(!$reqVerifyOffer->execute([intval($idOffre)])) return ERROR_BDD_OFFER;
     if($reqVerifyOffer->rowCount()==0) return OFFER_NOT_FOUND;

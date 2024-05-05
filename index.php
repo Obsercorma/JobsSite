@@ -5,6 +5,7 @@ define("DEBUG_MODE", false);
 if(session_status() === PHP_SESSION_NONE) session_start();
 $isConnected = isset($_SESSION["idUser"]);
 $cnxSession = $isConnected ? $_SESSION["idUser"] : 0;
+$isStudent = $isConnected ? $_SESSION["status"] == 1 : false;
 
 if(isset($_GET["searchOffer"])){
 	header("Location: ?section=lesOffres&query=".htmlspecialchars($_GET["searchOffer"]));
