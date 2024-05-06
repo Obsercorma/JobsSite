@@ -9,9 +9,9 @@
 
     <div class="cards">
         <div class="row justify-content-around">
-        <?php if(count($listOffers)==0){echo"<p>Vous n'avez pas d'offres en ligne. Voulez-vous <a href='index.php?section=depotAnno'>déposer une offre?</a></p>";}?>
+        <?php if(($cMyOffers=count($listOffers))==0){echo"<p>Vous n'avez pas d'offres en ligne. Voulez-vous <a href='index.php?section=depotAnno'>déposer une offre?</a></p>";}?>
             <?php  foreach($listOffers as $offer): ?>
-            <div class="card bg-dark bg-opacity-25 text-white rounded border-dark border-3 <?php if(count($listOffers)==1){echo "col-4 w-60";}else{echo "col-4";}?>">
+            <div class="card bg-dark bg-opacity-25 text-white rounded border-dark border-3 <?php if($cMyOffers==1){echo "col-3 w-60";}else{echo "col-4 w-30";}?>">
                 <img src="vue/images/user.png" class="card-img-top mt-2">
                 <div class="card-body">
                 <h3 class="card-title"><?= $offer["intitoffre"] ?></h3>
